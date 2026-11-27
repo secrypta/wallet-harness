@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=bybit-blind-sign-victim verdict=...".
+vector=blind-eth-sign
+tier=b
+target=bybit-blind-sign-victim
+label=vuln
+split=holdout
+test=test/BybitBlindSignIncident.t.sol
+provenance=Bybit/Safe multisig blind-signing theft, 2025-02-21 (tx 0x46deef..., Safe execTransaction 0x6a761202, malicious impl 0xbDd077..9516); see PROVENANCE.md

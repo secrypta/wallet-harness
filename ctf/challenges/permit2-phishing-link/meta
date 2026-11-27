@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Incident-derived: patch a documented real drain.
+vector=permit2-phishing
+title=Patch the LINK Permit2 phishing drain
+difficulty=core
+interface=permit2AmountFor(uint256 actionAmount)
+corpus_ref=corpus/permit2-phishing.md
+# Incident facts verbatim from fixtures/permit2-phishing/b-incident/link-permit2-victim/PROVENANCE.md
+incident=LINK (ChainLink) Permit2 phishing drain; drain tx 0xa25807c87cc99a9c7195548c1438cde9ad937652cc3fb60fe609c01b339b04d0 (Ethereum, block 26113853, 2026-10-03 19:18:11 UTC); a standing approve(Permit2, max) (reported ~411 days old) drained by one unbounded off-chain PermitSingle signature; 12,041.303555521415836625 LINK swept in one transferFrom
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.

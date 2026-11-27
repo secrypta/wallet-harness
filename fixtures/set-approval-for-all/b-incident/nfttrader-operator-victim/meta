@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence),
+# closing the set-approval-for-all vector's previously missing real-incident holdout.
+# The specific on-chain tx and real addresses ARE public and confirmed (see PROVENANCE.md); the
+# fixture is a minimized MECHANISM reproduction (own MIT code), not a byte-for-byte on-chain replay.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=nfttrader-operator-victim verdict=...".
+vector=set-approval-for-all
+tier=b
+target=nfttrader-operator-victim
+label=vuln
+split=holdout
+test=test/NftTraderIncident.t.sol
+provenance=NFTTrader.org operator-approval drain, 2023-12-16 (~$3M). Victims held a standing setApprovalForAll to the marketplace; an unguarded editCounterPart reachable via a mid-settlement ERC-721 callback redirected the swap counterparty to a victim, pulling the victim's NFT with the lingering operator approval. Real tx 0xec7523...6b393d; attacker 0xb1edf2a0..34d2d; vuln NFTTrader 0xc310e760..4ece0; source SlowMist + Ancilia; see PROVENANCE.md

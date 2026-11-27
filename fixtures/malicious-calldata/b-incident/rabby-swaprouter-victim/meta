@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[malicious-calldata] target=rabby-swaprouter-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=rabby-swaprouter-victim
+label=vuln
+split=holdout
+test=test/RabbySwapRouterIncident.t.sol
+provenance=Rabby Wallet Swap router exploit 2022-10-11 Ethereum+BNB ~$200K; in-wallet swap router executes caller-supplied target+calldata (OZ functionCallWithValue) unvalidated -> attacker runs transferFrom as router, draining approvals; attack tx 0x914c1ae4...2fbfc26; see PROVENANCE.md

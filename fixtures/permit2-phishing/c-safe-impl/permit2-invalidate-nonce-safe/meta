@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code (vendored Permit2).
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine
+# independence); exercises the REAL Permit2 `invalidateNonces` pre-emption surface, distinct
+# from the scoped/sigtransfer/lockdown fixtures. Honest PRECISION check on real safe code (0 FP).
+# Key is (vector, target); the harness emits "[permit2-phishing] target=permit2-invalidate-nonce-safe verdict=...".
+vector=permit2-phishing
+tier=c
+target=permit2-invalidate-nonce-safe
+label=safe
+split=holdout
+test=test/RealSafePermit2Round2.t.sol
+provenance=Real vendored Uniswap Permit2 (MIT, commit cc56ad0) AllowanceTransfer.invalidateNonces: the owner bumps the nonce so a phished signature can never be submitted (permit reverts InvalidNonce); no allowance is ever set; harness stays silent; see PROVENANCE.md

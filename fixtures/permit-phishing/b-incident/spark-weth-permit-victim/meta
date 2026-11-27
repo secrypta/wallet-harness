@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[permit-phishing] target=spark-weth-permit-victim verdict=...".
+vector=permit-phishing
+tier=b
+target=spark-weth-permit-victim
+label=vuln
+split=holdout
+test=test/SparkWethPermitIncident.t.sol
+provenance=Spark WETH (spWETH) EIP-2612 permit phishing drain ~$32M, 2024-09-28; drain tx 0xf7c00f18...1c1d8fb Success block 20847274 (Ethereum), 12,124.57 spWETH swept from victim 0xaa15...e57 via drainer contract 0x33fff906... split to 0x471c... + 0xaa86... (all Etherscan Fake_Phishing-labeled); one phishing permit -> unbounded allowance -> two transferFrom; sources CertiK + Cointelegraph + ScamSniffer + Etherscan phishing labels; see PROVENANCE.md

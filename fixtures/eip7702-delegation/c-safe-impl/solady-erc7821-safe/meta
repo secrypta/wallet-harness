@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady ERC7821 (EIP-7702 batch executor) + Ownable is real published code wal
+# was NEVER tuned against; honest PRECISION check on unseen safe code. Scored on the holdout split.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=solady-erc7821-safe verdict=...".
+vector=eip7702-delegation
+tier=c
+target=solady-erc7821-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyErc7821Holdout.t.sol
+provenance=Solady v0.1.22 ERC7821 batch executor + Ownable (MIT); non-owner batch reverts Unauthorized, BLOCKED; see PROVENANCE.md

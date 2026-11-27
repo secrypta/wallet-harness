@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady ERC1271 (ERC-7739) is an independent impl wal was NEVER tuned against;
+# honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[signature-phishing] target=solady-erc1271-safe verdict=...".
+vector=signature-phishing
+tier=c
+target=solady-erc1271-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyERC1271Holdout.t.sol
+provenance=Solady ERC1271 ERC-7739 nested EIP-712 (Vectorized/solady, MIT); forged signature rejected; see PROVENANCE.md

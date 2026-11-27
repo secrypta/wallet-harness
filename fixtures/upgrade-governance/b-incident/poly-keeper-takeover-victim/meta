@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[upgrade-governance] target=poly-keeper-takeover-victim verdict=...".
+vector=upgrade-governance
+tier=b
+target=poly-keeper-takeover-victim
+label=vuln
+split=holdout
+test=test/PolyNetworkIncident.t.sol
+provenance=Poly Network exploit 2021-08-10 Ethereum ~$611M; cross-chain manager executes inbound messages with its own authority and does not block a message targeting its own keeper-management function -> attacker reassigns the privileged keeper role, then authorizes withdrawals that drain the vault; keeper-takeover tx 0xb1f70464...d59581, drain tx 0xad7a2c70...17602a; see PROVENANCE.md

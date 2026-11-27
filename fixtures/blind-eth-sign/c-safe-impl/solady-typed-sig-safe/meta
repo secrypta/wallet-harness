@@ -1,0 +1,15 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady EIP712 + SignatureCheckerLib clear-signing (no raw-hash path) is an
+# independent impl wal was NEVER tuned against; honest PRECISION check on unseen safe code.
+# PRECISION-SIDE safe holdout: no clean independent vuln blind-eth-sign incident exists at our
+# provenance bar that is not already used elsewhere, so this vector's independent holdout is
+# safe-only - the harness MUST stay silent (0 FP). Independent SOURCE from oz-clearsign-safe
+# (OpenZeppelin) and permit2-sigverify-safe (Uniswap Permit2).
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=solady-typed-sig-safe verdict=...".
+vector=blind-eth-sign
+tier=c
+target=solady-typed-sig-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyTypedSigHoldout.t.sol
+provenance=Solady EIP712 + SignatureCheckerLib (Vectorized/solady v0.1.22, MIT), typed-only gate with no raw-hash/eth_sign entrypoint; a blind eth_sign signature is rejected (recovered signer != owner), only a fully-typed signature authorizes; see PROVENANCE.md

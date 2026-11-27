@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady ERC4626 is an independent impl wal was NEVER tuned against (distinct from
+# the OZ oz-erc4626-safe); honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[approve-drainer] target=solady-erc4626-safe verdict=...".
+vector=approve-drainer
+tier=c
+target=solady-erc4626-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyApproveRound5Holdout.t.sol
+provenance=Solady ERC4626 vault shares (Vectorized/solady v0.1.22, commit 65e87c72, MIT); the share token is an ERC-20 whose allowance accounting is Solady's unmodified code; a bounded share approve cannot be over-drawn; harness stays silent; see PROVENANCE.md

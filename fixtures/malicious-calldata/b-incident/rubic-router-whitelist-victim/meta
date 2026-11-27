@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[malicious-calldata] target=rubic-router-whitelist-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=rubic-router-whitelist-victim
+label=vuln
+split=holdout
+test=test/RubicProxyIncident.t.sol
+provenance=Rubic Exchange exploit 2022-12-25 Ethereum ~$1.4M; proxy forwards caller-supplied calldata to any whitelisted router, a TOKEN(USDC) was mistakenly whitelisted -> attacker runs transferFrom via it, draining approvals; attack tx 0x9a97d856...28e7d46; see PROVENANCE.md

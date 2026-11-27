@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady is an independent impl the wal detectors were NEVER tuned against,
+# so this is an honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[approve-drainer] target=solady-erc20-safe verdict=...".
+vector=approve-drainer
+tier=c
+target=solady-erc20-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyHoldout.t.sol
+provenance=Solady ERC20 (Vectorized/solady, MIT) bounded-approve; unmodified allowance accounting; see PROVENANCE.md

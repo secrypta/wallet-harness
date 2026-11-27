@@ -1,0 +1,8 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=set-approval-for-all
+title=Patch the NFTTrader reentrant swap drain
+difficulty=advanced
+interface=completeSwap(uint256 swapId)
+corpus_ref=corpus/set-approval-for-all.md
+# Incident facts verbatim from fixtures/set-approval-for-all/b-incident/nfttrader-operator-victim/PROVENANCE.md
+incident=NFTTrader.org operator-approval drain, 2023-12-16 (~$3M, per hacked.slowmist.io). Victims held a standing setApprovalForAll to the marketplace; an unguarded editCounterPart reachable via a mid-settlement ERC-721 callback redirected the swap counterparty to a victim, pulling the victim's NFT with the lingering operator approval. Real tx 0xec7523660f8b66d9e4a5931d97ad8b30acc679c973b20038ba4c15d4336b393d; attacker 0xb1edf2a0ba8bc789cbc3dfbe519737cada034d2d; vuln NFTTrader 0xc310e760778ecbca4c65b6c559874757a4c4ece0; block 18799488, 2023-12-16 15:22:59 UTC; source SlowMist + Ancilia.

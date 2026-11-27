@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady EIP-2612 permit is an independent impl wal was NEVER tuned against;
+# BOUNDED-VALUE property (distinct from solady-permit-safe=forged, -deadline=deadline, -nonce-replay).
+# Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[permit-phishing] target=solady-permit-bounded-safe verdict=...".
+vector=permit-phishing
+tier=c
+target=solady-permit-bounded-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyPermitRound5Holdout.t.sol
+provenance=Solady ERC20 EIP-2612 permit (Vectorized/solady v0.1.22, commit 65e87c72, MIT); a bounded permit (value = action amount) is genuinely usable for that amount but a full-balance drain reverts (InsufficientAllowance); harness stays silent; see PROVENANCE.md

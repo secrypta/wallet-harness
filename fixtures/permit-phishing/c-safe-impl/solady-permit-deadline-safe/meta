@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady EIP-2612 permit is an independent impl wal was NEVER tuned against.
+# DEADLINE property on Solady (distinct from solady-permit-safe's forged-signature property, and
+# from the OZ deadline fixture - independent codebase). Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[permit-phishing] target=solady-permit-deadline-safe verdict=...".
+vector=permit-phishing
+tier=c
+target=solady-permit-deadline-safe
+label=safe
+split=holdout
+test=test/RealSafePermitRound4.t.sol
+provenance=Solady ERC20 EIP-2612 permit (Vectorized/solady v0.1.22, commit 65e87c72, MIT); a phishing permit signed with an EXPIRED deadline is rejected (PermitExpired) -> no allowance -> drain reverts; harness stays silent; see PROVENANCE.md

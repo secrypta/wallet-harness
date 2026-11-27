@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[permit2-phishing] target=link-permit2-victim verdict=...".
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+vector=permit2-phishing
+tier=b
+target=link-permit2-victim
+label=vuln
+split=holdout
+test=test/LinkPermit2Incident.t.sol
+provenance=LINK Permit2 phishing drain; drain tx 0xa25807c8...339b04d0 Success 2026-10-03 19:18:11 UTC (Ethereum, block 26113853), 12,041.30 LINK from victim 0x71619d71...686B499b to drainer 0xA6809aeD...66f73D via Etherscan-labeled phishing contract 0x0000cdCa...0000; standing approve(Permit2,max) drained by one off-chain PermitSingle signature (approval reported signed 2025-08-18, ~411 days old); sources Scam Sniffer + Etherscan phishing labels; see PROVENANCE.md

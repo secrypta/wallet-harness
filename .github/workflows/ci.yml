@@ -1,0 +1,42 @@
+name: CI
+# Reproducibility gate for wallet-harness: on every push/PR, a clean GitHub-hosted runner
+# fetches the pinned build dependency and re-runs the corpus and CTF exactly as documented,
+# in Docker (Foundry runs inside the container). A green check means the harness's claims -
+# every vulnerable target VULNERABLE, every safe target BLOCKED (0 false negatives / 0 false
+# positives), and the CTF ground-truth (seed FAILs, solution PASSes) - reproduce from scratch
+# on a machine that is not ours. Nothing here is tuned or cached from the author's box.
+#
+# Note: these jobs run only once the repository is public on GitHub (Actions do not execute
+# before the first push). Everything is offline + first-party fixtures in an ephemeral,
+# isolated runner, so running the toy Solidity in Docker is safe.
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+# One run per ref; a newer push cancels an in-flight run on the same branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  harness:
+    name: corpus + CTF (Docker/Foundry)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch pinned forge-std (build dependency)
+        run: make forge-std
+
+      - name: Run corpus vectors - enforce 0 false positives / 0 false negatives
+        run: make run
+
+      - name: CTF ground-truth selftest - seed FAILs, solution PASSes
+        run: make selftest

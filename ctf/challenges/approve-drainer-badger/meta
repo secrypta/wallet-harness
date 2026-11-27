@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Incident-derived: patch a documented real drain.
+vector=approve-drainer
+title=Patch the BadgerDAO approval-injection drain
+difficulty=core
+interface=authorizeSpender(address token, address spender, uint256 actionAmount)
+corpus_ref=corpus/approve-drainer.md
+# Incident facts verbatim from fixtures/approve-drainer/b-incident/badger-victim/PROVENANCE.md
+incident=BadgerDAO front-end compromise / approval-injection drain, 2021-12-02; a compromised front-end injected increaseAllowance(attacker, ...) into victim wallets, then the attacker transferFrom'd the balances out; largest single-victim drain tx 0x951babdddbfbbba81bbbb7991a959d9815e80cc5d9418d10e692f41541029869 (~900 byvWBTC ~= $50.8M); ~$120M total across 500+ approvers; source rekt.news/badger-rekt + Etherscan
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.

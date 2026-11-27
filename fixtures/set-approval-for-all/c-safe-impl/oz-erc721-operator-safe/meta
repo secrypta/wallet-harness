@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OpenZeppelin ERC721 operator-for-all authorization is real published code wal
+# was NEVER tuned against; honest PRECISION check on unseen safe code. Fills the {OZ}x{ERC-721}
+# operator cell as a scored holdout (distinct from oz-erc1155 / solady-erc721/erc1155).
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=oz-erc721-operator-safe verdict=...".
+vector=set-approval-for-all
+tier=c
+target=oz-erc721-operator-safe
+label=safe
+split=holdout
+test=test/RealSafeOzERC721OperatorHoldout.t.sol
+provenance=OpenZeppelin v5.1.0 ERC721 operator-for-all (MIT); an operator not granted setApprovalForAll cannot sweep the holder's tokens (ERC721InsufficientApproval), BLOCKED; see PROVENANCE.md

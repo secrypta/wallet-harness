@@ -1,0 +1,7 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=signature-phishing
+title=Order signature does not bind amount or recipient
+difficulty=core
+interface=fillOrder(address token, uint256 amount, address recipient, uint256 nonce, bytes sig)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/signature-phishing.md

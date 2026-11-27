@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Mirrors a benchmark tier-b incident as a "patch the drain" puzzle.
+vector=delegatecall-hijack
+title=Patch the Parity wallet-library drain
+difficulty=core
+interface=initWallet(address newOwner)
+# incident facts verbatim from fixtures/delegatecall-hijack/b-incident/parity-wallet-library-victim/PROVENANCE.md
+incident=Parity multisig wallet (first Parity hack), 2017-07-19; ~153,037 ETH (~$30M) across affected wallets (82,189.93 ETH from the example wallet); attack tx 0x9dbf0326a03a2a3719c27be4fa69aacc9857fd231a8d9dcaede4bb083def75ec
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/delegatecall-hijack.md

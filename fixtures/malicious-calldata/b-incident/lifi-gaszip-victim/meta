@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[malicious-calldata] target=lifi-gaszip-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=lifi-gaszip-victim
+label=vuln
+split=holdout
+test=test/LiFiIncident.t.sol
+provenance=LI.FI/Jumper arbitrary-call exploit 2024-07-16 ~$9.73M; unvalidated swap-facet target+calldata runs transferFrom on infinite approvals; mechanism-level, see PROVENANCE.md

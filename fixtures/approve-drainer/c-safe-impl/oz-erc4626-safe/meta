@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine
+# independence); a real OZ ERC4626 vault share token is a distinct real contract surface the
+# detectors were not tuned against. Honest PRECISION check on real safe code (0 FP).
+# Key is (vector, target); the harness emits "[approve-drainer] target=oz-erc4626-safe verdict=...".
+vector=approve-drainer
+tier=c
+target=oz-erc4626-safe
+label=safe
+split=holdout
+test=test/RealSafeApproveRound2.t.sol
+provenance=OpenZeppelin Contracts v5.1.0 ERC4626 vault (share token is ERC20, MIT, commit 69c8def5); bounded approve on vault shares; harness stays silent; see PROVENANCE.md

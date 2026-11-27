@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Facts verified against coinspect learn-evm-attacks (+ BlockSec / Zengo). The victim address is a
+# coinspect PoC constant (NOT confirmed on-chain) and is an explicit stand-in; attacker/router/tx
+# are the real documented identifiers, used as labels only (never a detection signal).
+# Key is (vector, target); the harness emits "[permit-phishing] target=anyswap-permit-bypass-victim verdict=...".
+vector=permit-phishing
+tier=b
+target=anyswap-permit-bypass-victim
+label=vuln
+split=holdout
+test=test/AnyswapIncident.t.sol
+provenance=Anyswap/Multichain AnyswapV4Router permit-bypass, 2022-01-19 (~$960K total; PoC-demo ~308.64 WETH); anySwapOutUnderlyingWithPermit -> WETH no-permit fallback -> transferFrom of standing approval; source coinspect learn-evm-attacks; see PROVENANCE.md

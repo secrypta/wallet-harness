@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[malicious-calldata] target=unizen-aggregator-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=unizen-aggregator-victim
+label=vuln
+split=holdout
+test=test/UnizenAggregatorIncident.t.sol
+provenance=Unizen trade-aggregator exploit 2024-03-08 Ethereum ~$2.1M; post-upgrade swap flow runs arbitrary external call with no msg.sender source-binding / no trusted-router allowlist -> attacker runs transferFrom as aggregator, draining approvals (confused deputy); attack tx 0x923d1d63...c765fcd; see PROVENANCE.md

@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[malicious-calldata] target=hashflow-deprecated-router-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=hashflow-deprecated-router-victim
+label=vuln
+split=holdout
+test=test/HashflowIncident.t.sol
+provenance=Hashflow 2023-06-14 ~$600K; deprecated contract kept an unauthorized function invoking transferFrom against standing approvals; attack tx 0xdedda493... verified on-chain; see PROVENANCE.md

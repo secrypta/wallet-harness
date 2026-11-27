@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real OpenZeppelin proxy code the wal detectors were NEVER tuned against - an
+# honest PRECISION check that a canonical proxy's delegatecall-to-implementation is not flagged.
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=oz-erc1967-proxy-safe verdict=...".
+vector=delegatecall-hijack
+tier=c
+target=oz-erc1967-proxy-safe
+label=safe
+split=holdout
+test=test/RealSafeDelegatecallHijack.t.sol
+provenance=OpenZeppelin v5.1.0 ERC1967Proxy + UUPSUpgradeable (MIT); proxy delegatecalls only its managed implementation slot, no caller-chosen delegatecall target; see PROVENANCE.md

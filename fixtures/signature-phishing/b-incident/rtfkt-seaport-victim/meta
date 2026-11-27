@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[signature-phishing] target=rtfkt-seaport-victim verdict=...".
+vector=signature-phishing
+tier=b
+target=rtfkt-seaport-victim
+label=vuln
+split=holdout
+test=test/RtfktSeaportIncident.t.sol
+provenance=RTFKT/CloneX Seaport bulk private-listing phishing, 2022-12-08 (tx 0xbf2542..., Seaport 1.1 fulfillAvailableAdvancedOrders); see PROVENANCE.md

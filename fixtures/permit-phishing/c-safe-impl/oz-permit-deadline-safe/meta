@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code.
+# Real OZ v5.1.0 ERC20Permit, DEADLINE-enforcement property (distinct from oz-permit-safe's
+# bounded-allowance property). OZ is the reference impl (not holdout).
+# Key is (vector, target); the harness emits "[permit-phishing] target=oz-permit-deadline-safe verdict=...".
+vector=permit-phishing
+tier=c
+target=oz-permit-deadline-safe
+label=safe
+test=test/RealSafePermitRound4.t.sol
+provenance=OpenZeppelin Contracts v5.1.0 ERC20Permit/EIP712/ECDSA (MIT, commit 69c8def5); a phishing permit signed with an EXPIRED deadline is rejected (ERC2612ExpiredSignature) -> no allowance -> drain reverts; harness stays silent; see PROVENANCE.md

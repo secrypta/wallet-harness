@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (a): our MIT toy pair.
+# Key is (vector, target); the harness emits "[permit2-phishing] target=safe-permit2 verdict=...".
+vector=permit2-phishing
+tier=a
+target=safe-permit2
+label=safe
+test=test/Permit2Phishing.t.sol
+provenance=synthetic toy target authored in this repo (MIT); bounded Permit2 signature (amount+expiration)

@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OZ EIP712 + ECDSA authority-signed voucher claim is real published crypto wal
+# was NEVER tuned against; honest PRECISION check on unseen safe code. PRECISION-SIDE safe
+# holdout (no independent code-level vuln fake-airdrop incident at the bar). DISTINCT mechanism
+# from the Merkle-proof holdouts: signature voucher, not a Merkle proof.
+# Key is (vector, target); the harness emits "[fake-airdrop] target=signature-voucher-safe verdict=...".
+vector=fake-airdrop
+tier=c
+target=signature-voucher-safe
+label=safe
+split=holdout
+test=test/RealSafeSignatureVoucherHoldout.t.sol
+provenance=OpenZeppelin v5.1.0 EIP712 + ECDSA (MIT) under a canonical authority-signed airdrop voucher; a forged voucher recovers to a non-authority signer and is rejected, BLOCKED; see PROVENANCE.md

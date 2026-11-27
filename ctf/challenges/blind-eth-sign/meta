@@ -1,0 +1,7 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=blind-eth-sign
+title=Wallet executes on a blind, caller-supplied digest
+difficulty=advanced
+interface=executeWithSig(bytes32 signedHash, bytes sig, address to, uint256 amount, uint256 nonce)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/blind-eth-sign.md

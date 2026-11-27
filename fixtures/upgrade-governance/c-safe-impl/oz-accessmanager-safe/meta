@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real OpenZeppelin AccessManager code the wal detectors were NEVER tuned
+# against - an honest PRECISION check on role+delay-gated governance. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[upgrade-governance] target=oz-accessmanager-safe verdict=...".
+vector=upgrade-governance
+tier=c
+target=oz-accessmanager-safe
+label=safe
+split=holdout
+test=test/RealSafeUpgradeGovernance.t.sol
+provenance=OpenZeppelin v5.1.0 AccessManager (MIT); sensitive admin op gated by canCall (role + execution delay), no instant single-key swap; see PROVENANCE.md

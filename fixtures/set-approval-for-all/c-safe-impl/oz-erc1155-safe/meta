@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OpenZeppelin ERC1155 operator-for-all authorization is real published code wal
+# was NEVER tuned against; honest PRECISION check on unseen safe code. Scored on the holdout split.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=oz-erc1155-safe verdict=...".
+vector=set-approval-for-all
+tier=c
+target=oz-erc1155-safe
+label=safe
+split=holdout
+test=test/RealSafeOzERC1155Holdout.t.sol
+provenance=OpenZeppelin v5.1.0 ERC1155 operator-for-all (MIT); un-approved operator sweep reverts, BLOCKED; see PROVENANCE.md

@@ -1,0 +1,8 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=eip7702-delegation
+title=Patch the QNT reserve-pool 7702 drain
+difficulty=advanced
+interface=batch(address[] targets, bytes[] payloads)
+corpus_ref=corpus/eip7702-delegation.md
+# Incident facts verbatim from fixtures/eip7702-delegation/b-incident/qnt-pool-7702-victim/PROVENANCE.md
+incident=QNT reserve-pool drain via a 7702-delegated ADMIN EOA, 2026-04-28 (1,974.546547972979064297 QNT moved pool->attacker in the pinned tx, ~$124.9K; Ethereum mainnet). Admin EOA 7702-delegated its code to a BatchExecutor whose batch(address[],bytes[]) is PUBLIC with no access control; an attacker drove it to call the pool's admin-only forwardTransaction (admin-by-address trust passed). Pinned exploit tx 0xef9994ac862318ccf3ebdb66c181bb159651373b945aea59a966608d7b98684f, block 24978818.

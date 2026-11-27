@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code (vendored Permit2).
+# Key is (vector, target); the harness emits "[permit2-phishing] target=scoped-permit2-safe verdict=...".
+vector=permit2-phishing
+tier=c
+target=scoped-permit2-safe
+label=safe
+test=test/RealSafePermit2.t.sol
+provenance=real Uniswap Permit2 core verbatim @cc56ad0 (MIT), scoped-signature policy; 2 solmate imports swapped for MIT shim; see PROVENANCE.md

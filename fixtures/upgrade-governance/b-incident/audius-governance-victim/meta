@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[upgrade-governance] target=audius-governance-victim verdict=...".
+vector=upgrade-governance
+tier=b
+target=audius-governance-victim
+label=vuln
+split=holdout
+test=test/AudiusGovernanceIncident.t.sol
+provenance=Audius governance takeover via callable proxy initialize, 2022-07-23 (~704 ETH); see PROVENANCE.md

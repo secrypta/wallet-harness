@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): reference-impl of the canonical defense.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=allowlisted-deleg-safe verdict=...".
+vector=eip7702-delegation
+tier=c
+target=allowlisted-deleg-safe
+label=safe
+test=test/RealSafeDelegation.t.sol
+provenance=AllowlistedDelegatePolicy reference-impl (allow-listed audited delegate only); see PROVENANCE.md

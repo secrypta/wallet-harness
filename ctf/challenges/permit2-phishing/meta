@@ -1,0 +1,7 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=permit2-phishing
+title=Unbounded Permit2 signature hands over the full balance
+difficulty=core
+interface=permit2AmountFor(uint256 actionAmount)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/permit2-phishing.md

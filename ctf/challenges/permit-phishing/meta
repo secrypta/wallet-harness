@@ -1,0 +1,7 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=permit-phishing
+title=Unlimited EIP-2612 permit signs away the whole balance
+difficulty=core
+interface=permitValueFor(uint256 actionAmount)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/permit-phishing.md

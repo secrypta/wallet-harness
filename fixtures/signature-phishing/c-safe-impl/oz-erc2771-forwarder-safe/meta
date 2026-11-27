@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OpenZeppelin ERC2771Forwarder EIP-712 signature verification is real published
+# code wal was NEVER tuned against; honest PRECISION check on unseen safe code. Distinct SURFACE
+# from the direct-signature holdouts (SignatureChecker / EIP712+ECDSA / Solady ERC1271): this is
+# the canonical META-TRANSACTION relay path. Scored on the holdout split.
+# Key is (vector, target); the harness emits "[signature-phishing] target=oz-erc2771-forwarder-safe verdict=...".
+vector=signature-phishing
+tier=c
+target=oz-erc2771-forwarder-safe
+label=safe
+split=holdout
+test=test/RealSafeMetaTxForwarderHoldout.t.sol
+provenance=OpenZeppelin v5.1.0 ERC2771Forwarder EIP-712 meta-tx verifier (MIT); a forged ForwardRequest (from=victim, signed by attacker) is rejected ERC2771ForwarderInvalidSigner, BLOCKED; see PROVENANCE.md

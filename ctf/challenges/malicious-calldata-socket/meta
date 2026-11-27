@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Mirrors a benchmark tier-b incident as a "patch the drain" puzzle.
+vector=malicious-calldata
+title=Patch the Socket Gateway call-injection drain
+difficulty=core
+interface=performAction(address fromToken, uint256 amount, bytes swapExtraData)
+# incident facts verbatim from fixtures/malicious-calldata/b-incident/socket-gateway-victim/PROVENANCE.md
+incident=Socket Gateway arbitrary external call injection, 2024-01-16, Ethereum, ~$3.3M from ~219-230 wallets; attack tx 0xc6c3331fa8c2d30e1ef208424c08c039a89e510df2fb6ae31e5aa40722e28fd6 (SocketGateway 0x3a23f943181408eac424116af7b7790c94cb97a5)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/malicious-calldata.md

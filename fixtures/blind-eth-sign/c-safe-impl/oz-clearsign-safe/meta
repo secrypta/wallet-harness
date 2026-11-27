@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OZ EIP712+ECDSA clear-signing (no raw-hash path) is real published code wal was
+# NEVER tuned against; honest PRECISION check on unseen safe code. Scored on the holdout split.
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=oz-clearsign-safe verdict=...".
+vector=blind-eth-sign
+tier=c
+target=oz-clearsign-safe
+label=safe
+split=holdout
+test=test/RealSafeOzClearSignHoldout.t.sol
+provenance=OpenZeppelin v5.1.0 EIP712 + ECDSA, no raw-hash entrypoint (MIT); blind-signed opaque hash rejected, BLOCKED; see PROVENANCE.md

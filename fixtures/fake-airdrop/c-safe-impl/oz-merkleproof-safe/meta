@@ -1,0 +1,14 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OpenZeppelin MerkleProof is an independent canonical verifier wal was NEVER
+# tuned against; honest PRECISION check on unseen safe code. PRECISION-SIDE safe holdout: no
+# clean independent vuln fake-airdrop incident exists at our provenance bar, so this vector's
+# independent holdout is safe-only - the harness MUST stay silent (0 FP). DIFFERENT source than
+# the Solady-MerkleProofLib holdout (solady-merkle-airdrop-safe).
+# Key is (vector, target); the harness emits "[fake-airdrop] target=oz-merkleproof-safe verdict=...".
+vector=fake-airdrop
+tier=c
+target=oz-merkleproof-safe
+label=safe
+split=holdout
+test=test/RealSafeOzMerkleAirdropHoldout.t.sol
+provenance=OpenZeppelin v5.1.0 MerkleProof (MIT) under a canonical Merkle-gated airdrop distributor; an account absent from the tree / a wrong amount / a forged proof cannot claim; see PROVENANCE.md

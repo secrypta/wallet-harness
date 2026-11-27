@@ -1,0 +1,16 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Uniswap Permit2 SignatureVerification is an independent canonical verifier wal
+# was NEVER tuned against; honest PRECISION check on unseen safe code. PRECISION-SIDE safe
+# holdout: no clean independent vuln blind-eth-sign incident exists at our provenance bar that
+# is not already used elsewhere (Bybit is the delegatecall-hijack incident), so this vector's
+# independent holdout is safe-only - the harness MUST stay silent (0 FP).
+# Independent canonical SOURCE from signature-phishing's OZ/Solady fixtures (this uses Uniswap
+# Permit2's verifier), and from blind-eth-sign's dev ClearSigningWallet (repo-authored).
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=permit2-sigverify-safe verdict=...".
+vector=blind-eth-sign
+tier=c
+target=permit2-sigverify-safe
+label=safe
+split=holdout
+test=test/RealSafePermit2SigVerifyHoldout.t.sol
+provenance=Uniswap Permit2 SignatureVerification (MIT, commit cc56ad0) under a typed-EIP-712-gated withdrawal; a blind/raw-hash signature is rejected (recovered signer != owner), only a fully-typed signature authorizes; see PROVENANCE.md

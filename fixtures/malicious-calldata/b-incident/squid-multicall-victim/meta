@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident (CLASS-LEVEL).
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# CLASS-LEVEL: the specific on-chain tx and real addresses are NOT reproduced (could not be
+# authoritatively confirmed); attacker/victim are explicit placeholders. The documented mechanism
+# (permissionless arbitrary-call forwarder spends a standing approval) is reproduced faithfully.
+# Key is (vector, target); the harness emits "[malicious-calldata] target=squid-multicall-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=squid-multicall-victim
+label=vuln
+split=holdout
+test=test/SquidMulticallIncident.t.sol
+provenance=SquidMulticall approval exploit, 2026-04-07 (~$517K across 5 chains; BSC leg 1 WETH via run()/transferFrom); CLASS-LEVEL, specific tx not reproduced; see PROVENANCE.md

@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OpenZeppelin SignatureChecker (ERC-1271-aware) is real published code wal was
+# NEVER tuned against; honest PRECISION check on unseen safe code. Scored on the holdout split.
+# Key is (vector, target); the harness emits "[signature-phishing] target=oz-sigchecker-safe verdict=...".
+vector=signature-phishing
+tier=c
+target=oz-sigchecker-safe
+label=safe
+split=holdout
+test=test/RealSafeOzSignatureCheckerHoldout.t.sol
+provenance=OpenZeppelin v5.1.0 SignatureChecker + EIP712 (MIT); forged signature rejected, BLOCKED; see PROVENANCE.md

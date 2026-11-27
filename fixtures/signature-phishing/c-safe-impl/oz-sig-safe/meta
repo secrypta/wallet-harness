@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real crypto.
+# Key is (vector, target); the harness emits "[$vector] target=$target verdict=...".
+vector=signature-phishing
+tier=c
+target=oz-sig-safe
+label=safe
+test=test/RealSafeSignature.t.sol
+provenance=OpenZeppelin v5.1.0 EIP712+ECDSA (MIT) under a scoped settlement policy; see PROVENANCE.md

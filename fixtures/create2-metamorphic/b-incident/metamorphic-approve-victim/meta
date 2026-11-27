@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident (class-level).
+# Key is (vector, target); the harness emits "[create2-metamorphic] target=metamorphic-approve-victim verdict=...".
+vector=create2-metamorphic
+tier=b
+target=metamorphic-approve-victim
+label=vuln
+test=test/Create2MetamorphicIncident.t.sol
+provenance=CREATE2 drainer / metamorphic reuse (Scam Sniffer; BleepingComputer; MixBytes); see PROVENANCE.md

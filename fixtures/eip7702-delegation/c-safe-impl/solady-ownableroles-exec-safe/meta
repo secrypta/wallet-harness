@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady OwnableRoles bitmask role-gating on a 7702-delegate executor is real
+# published code wal was NEVER tuned against; honest PRECISION check on unseen safe code.
+# Distinct mechanism/codebase from oz-accesscontrol-exec (OZ) and from init-guard/erc7821.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=solady-ownableroles-exec-safe verdict=...".
+vector=eip7702-delegation
+tier=c
+target=solady-ownableroles-exec-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyRolesDelegateHoldout.t.sol
+provenance=Solady v0.1.22 OwnableRoles (MIT) role-gated 7702-delegate executor; a caller without owner/EXECUTOR_ROLE reverts Unauthorized, BLOCKED; see PROVENANCE.md

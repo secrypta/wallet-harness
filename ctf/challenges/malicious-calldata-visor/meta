@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Mirrors a benchmark tier-b incident as a "patch the drain" puzzle.
+vector=malicious-calldata
+title=Patch the Visor Finance delegated-transfer drain
+difficulty=advanced
+interface=deposit(uint256 amount, address visor)
+# incident facts verbatim from fixtures/malicious-calldata/b-incident/visor-delegated-transfer-victim/PROVENANCE.md
+incident=Visor Finance (VISR) exploit, 2021-12-21, Ethereum, ~$8.2M (8,812,958 VISR); attack tx 0x69272d8c84d67d1da2f6425b339192fa472898dce936f24818fda415c1c1ff3f (RewardsHypervisor 0xc9f27a50f82571c1c8423a42970613b8dbda14ef)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/malicious-calldata.md

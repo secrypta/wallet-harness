@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[upgrade-governance] target=paid-upgrade-victim verdict=...".
+vector=upgrade-governance
+tier=b
+target=paid-upgrade-victim
+label=vuln
+test=test/PaidUpgradeIncident.t.sol
+provenance=PAID Network unguarded single-key proxy upgrade -> malicious mint, 2021-03-05; see PROVENANCE.md

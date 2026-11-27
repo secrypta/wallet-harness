@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=premint-operator-victim verdict=...".
+vector=set-approval-for-all
+tier=b
+target=premint-operator-victim
+label=vuln
+split=holdout
+test=test/PremintIncident.t.sol
+provenance=PREMINT front-end injection, 2022-07-17 (~275 ETH/$375K, injected setApprovalForAll 0xa22cb465; attacker EOA 0x0C9797805a22E507Bf48F35C72A67f001b7418d0); see PROVENANCE.md

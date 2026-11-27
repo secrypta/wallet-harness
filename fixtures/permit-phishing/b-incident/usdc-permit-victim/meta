@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[permit-phishing] target=usdc-permit-victim verdict=...".
+vector=permit-phishing
+tier=b
+target=usdc-permit-victim
+label=vuln
+test=test/UsdcPermitIncident.t.sol
+provenance=USDC ERC-2612 permit phishing drain, 2026-03-16 (~1.77M USDC); see PROVENANCE.md

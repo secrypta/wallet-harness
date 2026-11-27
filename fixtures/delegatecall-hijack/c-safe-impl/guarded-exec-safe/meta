@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): reference-impl of the canonical defense.
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=guarded-exec-safe verdict=...".
+vector=delegatecall-hijack
+tier=c
+target=guarded-exec-safe
+label=safe
+test=test/RealSafeDelegatecall.t.sol
+provenance=reference-impl of Safe-style transaction guard + implementation-slot invariant (post-Bybit mitigation); see PROVENANCE.md

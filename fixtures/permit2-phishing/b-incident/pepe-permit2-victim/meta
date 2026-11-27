@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[permit2-phishing] target=pepe-permit2-victim verdict=...".
+vector=permit2-phishing
+tier=b
+target=pepe-permit2-victim
+label=vuln
+test=test/PepePermit2Incident.t.sol
+provenance=PEPE holder Permit2 phishing 2024-10-13 ~$1.39M (PEPE/MSTR/APU), one PermitBatch signature; see PROVENANCE.md

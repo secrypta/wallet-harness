@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (a): our MIT toy pair.
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=vulnerable-ethsign verdict=...".
+vector=blind-eth-sign
+tier=a
+target=vulnerable-ethsign
+label=vuln
+test=test/BlindEthSign.t.sol
+provenance=synthetic toy target authored in this repo (MIT); no external source

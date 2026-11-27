@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[malicious-calldata] target=transit-claimtokens-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=transit-claimtokens-victim
+label=vuln
+split=holdout
+test=test/TransitSwapIncident.t.sol
+provenance=Transit Swap exploit 2022-10-01 BNB Chain >$21M; transfer helper claimTokens(token,from,to,amount) runs transferFrom with caller-supplied UNVALIDATED owner `from`, draining standing approvals; attack tx 0x181a7882...b9b189; see PROVENANCE.md

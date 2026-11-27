@@ -1,0 +1,183 @@
+# drain-bench baseline - curated target -> subject-contract map (judgement call; see
+# bench/results/<tool>/META.md). Columns: vector<TAB>target<TAB>subject_contract<TAB>sol_path
+#
+# "subject_contract" is the first-party contract that embodies the vector for this target
+# (the wallet/account/clone under test), excluding shared mocks (MockERC20/721,
+# Malicious{Spender,Operator,Relayer}) and vendored libraries. A static analyzer is pointed at
+# sol_path and the verdict is attributed to findings ON subject_contract (by name), so vuln and
+# safe contracts living in the SAME file are told apart. Where safe and vuln targets share one
+# subject contract (the safe/vuln difference is off-chain, e.g. signing scope), both map to the
+# same contract and necessarily receive the same verdict - an honest reflection that a static
+# analyzer cannot distinguish them.
+#
+# OMITTED (scored as MISS, never guessed): permit-phishing/{safe-permit,vulnerable-permit} -
+# no target-specific first-party contract exists (only shared mocks); the safe/vuln split is
+# purely in the Foundry test flow, so there is no code artifact to hand a static analyzer.
+#   + set-approval-for-all/premint-operator-victim: front-end-injection incident whose fixture
+#     reuses only shared mocks (MockERC721 + MaliciousOperator) with no per-incident first-party
+#     clone, so there is no target-specific contract to scan -> MISS.
+# (address-poisoning/oz-erc20-benign-nearcollision-safe is INCLUDE, not OMIT: although its
+#  anti-poisoning behaviour lives in the test scenario, it still scans a real first-party file
+#  (OZERC20Fixture, canonical OZ v5.1.0 ERC20); safe -> expected BLOCKED -> a genuine TN.)
+#
+address-poisoning	safe-send	SafeSendWallet	src/SafeSendWallet.sol
+address-poisoning	vulnerable-send	VulnerableSendWallet	src/VulnerableSendWallet.sol
+address-poisoning	usdt-poison-victim	VulnerableSendWallet	src/VulnerableSendWallet.sol
+address-poisoning	wbtc-poison-victim	VulnerableSendWallet	src/VulnerableSendWallet.sol
+address-poisoning	verified-send-safe	VerifiedSendPolicy	fixtures/address-poisoning/c-safe-impl/VerifiedSendPolicy.sol
+approve-drainer	lingering-approve	LingeringAllowanceWallet	src/LingeringAllowanceWallet.sol
+approve-drainer	reset-approve-safe	ResetAllowanceWallet	src/ResetAllowanceWallet.sol
+approve-drainer	safe-wallet	SafeWallet	src/SafeWallet.sol
+approve-drainer	vulnerable-wallet	VulnerableWallet	src/VulnerableWallet.sol
+approve-drainer	badger-victim	BadgerSettClone	fixtures/approve-drainer/b-incident/BadgerSettClone.sol
+approve-drainer	pennysia-victim	PennysiaSettlementClone	fixtures/approve-drainer/b-incident/PennysiaSettlementClone.sol
+approve-drainer	oz-safe-wallet	SafeAllowanceFlow	fixtures/approve-drainer/c-safe-impl/SafeAllowanceFlow.sol
+approve-drainer	solady-erc20-safe	SoladyTokenFixture	fixtures/approve-drainer/c-safe-impl/SoladyERC20Fixture.sol
+blind-eth-sign	safe-ethsign	TypedSigWallet	src/BlindSignVector.sol
+blind-eth-sign	vulnerable-ethsign	BlindSigWallet	src/BlindSignVector.sol
+blind-eth-sign	ethsign-blind-victim	BlindSigWallet	src/BlindSignVector.sol
+blind-eth-sign	permit2-sigverify-safe	TypedSigGatedVault	fixtures/blind-eth-sign/c-safe-impl/TypedSigGatedVault.sol
+blind-eth-sign	typed-only-safe	ClearSigningWallet	fixtures/blind-eth-sign/c-safe-impl/ClearSigningWallet.sol
+create2-metamorphic	safe-create2	CodehashPinnedApprover	src/Create2Vector.sol
+create2-metamorphic	vulnerable-create2	MetamorphicSpender	src/Create2Vector.sol
+create2-metamorphic	metamorphic-approve-victim	MetamorphicSpender	src/Create2Vector.sol
+create2-metamorphic	tornado-governance-victim	GovernanceClone	fixtures/create2-metamorphic/b-incident/TornadoGovernanceClone.sol
+create2-metamorphic	codehash-pinned-safe	CodehashPinnedVault	fixtures/create2-metamorphic/c-safe-impl/CodehashPinnedVault.sol
+delegatecall-hijack	safe-exec	SafeAccount	src/SafeAccount.sol
+delegatecall-hijack	vulnerable-exec	VulnerableAccount	src/VulnerableAccount.sol
+delegatecall-hijack	bybit-exec-victim	BybitSafeClone	fixtures/delegatecall-hijack/b-incident/BybitSafeClone.sol
+delegatecall-hijack	parity-wallet-library-victim	ParityWalletLibrary	fixtures/delegatecall-hijack/b-incident/ParityWalletClone.sol
+delegatecall-hijack	guarded-exec-safe	GuardedExecutor	fixtures/delegatecall-hijack/c-safe-impl/GuardedExecutor.sol
+eip7702-delegation	safe-deleg	SafeDelegationAccount	src/DelegationVector.sol
+eip7702-delegation	vulnerable-deleg	VulnerableDelegationAccount	src/DelegationVector.sol
+eip7702-delegation	crimeenjoyor-victim	VulnerableDelegationAccount	src/DelegationVector.sol
+eip7702-delegation	inferno-batch7702-victim	InfernoAccount	fixtures/eip7702-delegation/b-incident/InfernoBatchDrainerClone.sol
+eip7702-delegation	allowlisted-deleg-safe	AllowlistedDelegatePolicy	fixtures/eip7702-delegation/c-safe-impl/AllowlistedDelegatePolicy.sol
+fake-airdrop	safe-claim	GiftToken	src/GiftToken.sol
+fake-airdrop	vulnerable-claim	GiftToken	src/GiftToken.sol
+fake-airdrop	lfg-claim-victim	StEthLikeToken	fixtures/fake-airdrop/b-incident/StEthLikeToken.sol
+fake-airdrop	oz-safe-claim	OZRealAsset	fixtures/fake-airdrop/c-safe-impl/OZRealAsset.sol
+fake-airdrop	solady-merkle-airdrop-safe	MerkleAirdropDistributor	fixtures/fake-airdrop/c-safe-impl/MerkleAirdropDistributor.sol
+malicious-calldata	safe-call	CalldataSafeWallet	src/CalldataSafeWallet.sol
+malicious-calldata	vulnerable-call	CalldataVulnerableWallet	src/CalldataVulnerableWallet.sol
+malicious-calldata	drainer-kit-victim	DrainerKitModule	fixtures/malicious-calldata/b-incident/DrainerKitModule.sol
+malicious-calldata	squid-multicall-victim	SquidMulticallClone	fixtures/malicious-calldata/b-incident/SquidMulticallClone.sol
+malicious-calldata	bebop-jam-settlement-victim	JamSettlementClone	fixtures/malicious-calldata/b-incident/JamSettlementClone.sol
+malicious-calldata	simulated-exec-safe	SimulatedExecutor	fixtures/malicious-calldata/c-safe-impl/SimulatedExecutor.sol
+permit2-phishing	safe-permit2	ToyPermit2	src/ToyPermit2.sol
+permit2-phishing	vulnerable-permit2	ToyPermit2	src/ToyPermit2.sol
+permit2-phishing	pepe-permit2-victim	ToyPermit2	src/ToyPermit2.sol
+permit2-phishing	permit2-sigtransfer-safe	Permit2SafeToken	fixtures/permit2-phishing/c-safe-impl/scoped-permit2-safe/Permit2SafeToken.sol
+permit2-phishing	scoped-permit2-safe	Permit2SafeToken	fixtures/permit2-phishing/c-safe-impl/scoped-permit2-safe/Permit2SafeToken.sol
+permit-phishing	safe-permit-consumer	ScopedPermitRouter	src/ScopedPermitRouter.sol
+permit-phishing	vulnerable-permit-consumer	UnboundedPermitRouter	src/UnboundedPermitRouter.sol
+permit-phishing	anyswap-permit-bypass-victim	AnyswapV4RouterClone	fixtures/permit-phishing/b-incident/AnyswapRouterClone.sol
+permit-phishing	lixir-permit-victim	LixirVaultTokenClone	fixtures/permit-phishing/b-incident/LixirVaultTokenClone.sol
+permit-phishing	usdc-permit-victim	USDCPermitClone	fixtures/permit-phishing/b-incident/USDCPermitClone.sol
+permit-phishing	oz-permit-safe	OZERC20PermitFixture	fixtures/permit-phishing/c-safe-impl/oz-permit-safe/OZERC20PermitFixture.sol
+permit-phishing	solady-permit-safe	SoladyTokenFixture	fixtures/approve-drainer/c-safe-impl/SoladyERC20Fixture.sol
+set-approval-for-all	safe-wallet	SafeWalletNFT	src/SafeWalletNFT.sol
+set-approval-for-all	vulnerable-wallet	VulnerableWalletNFT	src/VulnerableWalletNFT.sol
+set-approval-for-all	monkeydrainer-victim	MonkeyDrainerNFTClone	fixtures/set-approval-for-all/b-incident/MonkeyDrainerNFTClone.sol
+set-approval-for-all	nfttrader-operator-victim	NftTraderClone	fixtures/set-approval-for-all/b-incident/NftTraderClone.sol
+set-approval-for-all	oz-safe-operator	SafeOperatorFlow	fixtures/set-approval-for-all/c-safe-impl/SafeOperatorFlow.sol
+set-approval-for-all	solady-erc721-safe	SoladyNFTFixture	fixtures/set-approval-for-all/c-safe-impl/SoladyERC721Fixture.sol
+signature-phishing	bound-sig-safe	BoundSettlement	src/BoundSettlement.sol
+signature-phishing	replayable-sig	ReplaySettlement	src/ReplaySettlement.sol
+signature-phishing	safe-sig	Settlement	src/Settlement.sol
+signature-phishing	vulnerable-sig	Settlement	src/Settlement.sol
+signature-phishing	seaport-order-victim	SeaportLikeExchange	fixtures/signature-phishing/b-incident/SeaportLikeExchange.sol
+signature-phishing	oz-sig-safe	SafeSettlement	src/SafeSettlement.sol
+signature-phishing	solady-erc1271-safe	SoladyERC1271Wallet	fixtures/signature-phishing/c-safe-impl/SoladyERC1271Fixture.sol
+upgrade-governance	safe-upgrade	SafeUpgradeWallet	src/SafeUpgradeWallet.sol
+upgrade-governance	vulnerable-upgrade	VulnerableUpgradeWallet	src/VulnerableUpgradeWallet.sol
+upgrade-governance	audius-governance-victim	AudiusGovernanceClone	fixtures/upgrade-governance/b-incident/AudiusGovernanceClone.sol
+upgrade-governance	paid-upgrade-victim	PaidTokenProxy	fixtures/upgrade-governance/b-incident/PaidUpgradeClone.sol
+upgrade-governance	oz-timelock-safe	OZTimelockUUPSWallet	fixtures/upgrade-governance/c-safe-impl/oz-timelock-safe/OZTimelockUUPSWallet.sol
+#
+# --- rounds 3-6 additions (branch B vectors: delegatecall-hijack, upgrade-governance, malicious-calldata, create2-metamorphic) ---
+malicious-calldata	dexible-selfswap-victim	DexibleClone	fixtures/malicious-calldata/b-incident/DexibleClone.sol
+malicious-calldata	hashflow-deprecated-router-victim	HashflowDeprecatedRouterClone	fixtures/malicious-calldata/b-incident/HashflowDeprecatedRouterClone.sol
+malicious-calldata	lifi-gaszip-victim	LiFiGasZipClone	fixtures/malicious-calldata/b-incident/LiFiGasZipClone.sol
+malicious-calldata	rabby-swaprouter-victim	RabbySwapRouterClone	fixtures/malicious-calldata/b-incident/RabbySwapRouterClone.sol
+malicious-calldata	rubic-router-whitelist-victim	RubicProxyClone	fixtures/malicious-calldata/b-incident/RubicProxyClone.sol
+malicious-calldata	seneca-performoperations-victim	SenecaChamberClone	fixtures/malicious-calldata/b-incident/SenecaChamberClone.sol
+malicious-calldata	socket-gateway-victim	SocketGatewayClone	fixtures/malicious-calldata/b-incident/SocketGatewayClone.sol
+malicious-calldata	transit-claimtokens-victim	TransitSwapClone	fixtures/malicious-calldata/b-incident/TransitSwapClone.sol
+malicious-calldata	unizen-aggregator-victim	UnizenAggregatorClone	fixtures/malicious-calldata/b-incident/UnizenAggregatorClone.sol
+malicious-calldata	visor-delegated-transfer-victim	VisorHypervisorClone	fixtures/malicious-calldata/b-incident/VisorHypervisorClone.sol
+malicious-calldata	oz-multicall-safe	OZMulticallRouter	fixtures/malicious-calldata/c-safe-impl/oz-multicall-safe/OZMulticallRouter.sol
+malicious-calldata	oz-timelock-executor-safe	TimelockController	fixtures/malicious-calldata/c-safe-impl/oz-timelock-executor-safe/OZTimelockExecutor.sol
+malicious-calldata	solady-erc4337-executor-safe	SoladyErc4337Executor	fixtures/malicious-calldata/c-safe-impl/SoladyErc4337Executor.sol
+malicious-calldata	solady-multicallable-safe	SoladyMulticallableRouter	fixtures/malicious-calldata/c-safe-impl/solady-multicallable-safe/SoladyMulticallableRouter.sol
+malicious-calldata	solady-ownableroles-executor-safe	SoladyRolesExecutor	fixtures/malicious-calldata/c-safe-impl/solady-ownableroles-executor-safe/SoladyRolesExecutor.sol
+upgrade-governance	beanstalk-governance-victim	BeanstalkGovernanceClone	fixtures/upgrade-governance/b-incident/BeanstalkGovernanceClone.sol
+upgrade-governance	nomad-reinit-root-victim	NomadReplicaClone	fixtures/upgrade-governance/b-incident/NomadReplicaClone.sol
+upgrade-governance	poly-keeper-takeover-victim	PolyCrossChainManager	fixtures/upgrade-governance/b-incident/PolyNetworkClone.sol
+upgrade-governance	wormhole-uninit-impl-victim	WormholeCoreImpl	fixtures/upgrade-governance/b-incident/WormholeUninitImplClone.sol
+upgrade-governance	oz-accessmanager-safe	OZAccessManagedVault	fixtures/upgrade-governance/c-safe-impl/oz-accessmanager-safe/OZAccessManagedVault.sol
+upgrade-governance	oz-governor-safe	GovGovernedVault	fixtures/upgrade-governance/c-safe-impl/oz-governor-safe/OZGovernorGoverned.sol
+upgrade-governance	solady-uups-timelock-safe	SoladyTimelockUUPSWallet	fixtures/upgrade-governance/c-safe-impl/solady-uups-timelock-safe/SoladyTimelockUUPSWallet.sol
+upgrade-governance	wormhole-initguard-safe	WormholeInitGuardSafe	fixtures/upgrade-governance/c-safe-impl/wormhole-initguard-safe/WormholeInitGuardSafe.sol
+delegatecall-hijack	furucombo-proxy-victim	FurucomboProxyClone	fixtures/delegatecall-hijack/b-incident/FurucomboProxyClone.sol
+delegatecall-hijack	oz-erc1967-proxy-safe	OZERC1967ProxyWallet	fixtures/delegatecall-hijack/c-safe-impl/oz-erc1967-proxy-safe/OZERC1967ProxyWallet.sol
+delegatecall-hijack	oz-transparent-proxy-safe	TUPWallet	fixtures/delegatecall-hijack/c-safe-impl/oz-transparent-proxy-safe/OZTransparentProxyWallet.sol
+delegatecall-hijack	solady-erc7821-safe	SoladyERC7821Wallet	fixtures/delegatecall-hijack/c-safe-impl/solady-erc7821-safe/SoladyERC7821Wallet.sol
+delegatecall-hijack	solady-uups-proxy-safe	SoladyUUPSWallet	fixtures/delegatecall-hijack/c-safe-impl/solady-uups-proxy-safe/SoladyUUPSWallet.sol
+create2-metamorphic	oz-clones-safe	OZClonesFactory	fixtures/create2-metamorphic/c-safe-impl/oz-clones-safe/OZClonesFactory.sol
+create2-metamorphic	solady-create3-safe	Create3Factory	fixtures/create2-metamorphic/c-safe-impl/solady-create3-safe/Create3Factory.sol
+create2-metamorphic	solady-libclone-safe	LibCloneFactory	fixtures/create2-metamorphic/c-safe-impl/solady-libclone-safe/LibCloneFactory.sol
+#
+# === round3-6 expansion (branch A + C subject rows), consolidated 2026-11-19 ===
+# A vectors (approve-drainer / permit-phishing / permit2-phishing / address-poisoning):
+approve-drainer	hedgey-victim	HedgeyClaimCampaignsClone	fixtures/approve-drainer/b-incident/HedgeyClaimCampaignsClone.sol
+approve-drainer	steth-whale-victim	LidoStEthClone	fixtures/approve-drainer/b-incident/LidoStEthClone.sol
+approve-drainer	oz-safeerc20-safe	SafeErc20AllowanceFlow	fixtures/approve-drainer/c-safe-impl/SafeErc20AllowanceFlow.sol
+approve-drainer	oz-erc4626-safe	OZERC4626Fixture	fixtures/approve-drainer/c-safe-impl/OZERC4626Fixture.sol
+approve-drainer	solady-erc4626-safe	SoladyVaultFixture	fixtures/approve-drainer/c-safe-impl/solady-erc4626-safe/SoladyVaultFixture.sol
+approve-drainer	solady-erc6909-safe	SoladyERC6909Fixture	fixtures/approve-drainer/c-safe-impl/solady-erc6909-safe/SoladyERC6909Fixture.sol
+approve-drainer	solady-safetransferlib-safe	SoladySafeTransferLibWallet	fixtures/approve-drainer/c-safe-impl/solady-safetransferlib-safe/SoladySafeTransferLibWallet.sol
+permit-phishing	fwdeth-permit-victim	FwDethPermitClone	fixtures/permit-phishing/b-incident/FwDethPermitClone.sol
+permit-phishing	spark-weth-permit-victim	SparkWETHPermitClone	fixtures/permit-phishing/b-incident/SparkWETHPermitClone.sol
+# C vectors (signature-phishing / blind-eth-sign / fake-airdrop / set-approval-for-all / eip7702-delegation):
+signature-phishing	rtfkt-seaport-victim	SeaportBulkExchange	fixtures/signature-phishing/b-incident/SeaportBulkExchange.sol
+signature-phishing	oz-erc2771-forwarder-safe	MetaTxForwarderVault	fixtures/signature-phishing/c-safe-impl/MetaTxForwarderVault.sol
+signature-phishing	oz-sigchecker-safe	OzSignatureCheckerWallet	fixtures/signature-phishing/c-safe-impl/OzSignatureCheckerWallet.sol
+signature-phishing	solady-erc4337-userop-safe	SoladyErc4337Fixture	fixtures/signature-phishing/c-safe-impl/SoladyErc4337Fixture.sol
+signature-phishing	sodium-erc1271-victim	SodiumAccountClone	fixtures/signature-phishing/b-incident/SodiumAccountClone.sol
+signature-phishing	odos-erc6492-victim	OdosLimitOrderRouterClone	fixtures/signature-phishing/b-incident/OdosLimitOrderRouterClone.sol
+blind-eth-sign	bybit-blind-sign-victim	BlindMultisigWallet	fixtures/blind-eth-sign/b-incident/BlindMultisigWallet.sol
+blind-eth-sign	oz-clearsign-safe	OzClearSigningWallet	fixtures/blind-eth-sign/c-safe-impl/OzClearSigningWallet.sol
+blind-eth-sign	oz-votes-delegatebysig-safe	OzVotesTokenFixture	fixtures/blind-eth-sign/c-safe-impl/OzVotesTokenFixture.sol
+blind-eth-sign	solady-typed-sig-safe	SoladyTypedSigVault	fixtures/blind-eth-sign/c-safe-impl/SoladyTypedSigVault.sol
+fake-airdrop	oz-merkleproof-safe	OzMerkleAirdropDistributor	fixtures/fake-airdrop/c-safe-impl/OzMerkleAirdropDistributor.sol
+fake-airdrop	signature-voucher-safe	SignatureVoucherAirdrop	fixtures/fake-airdrop/c-safe-impl/SignatureVoucherAirdrop.sol
+set-approval-for-all	gondi-bundler-victim	GondiBundlerClone	fixtures/set-approval-for-all/b-incident/GondiBundlerClone.sol
+set-approval-for-all	magic-eden-pp2-victim	PaymentProcessorClone	fixtures/set-approval-for-all/b-incident/PaymentProcessorClone.sol
+set-approval-for-all	erc721a-operator-safe	Erc721AOperatorFixture	fixtures/set-approval-for-all/c-safe-impl/Erc721AOperatorFixture.sol
+set-approval-for-all	oz-erc1155-safe	OzScopedERC1155	fixtures/set-approval-for-all/c-safe-impl/OzERC1155Fixture.sol
+set-approval-for-all	oz-erc721-operator-safe	OzERC721OperatorFixture	fixtures/set-approval-for-all/c-safe-impl/OzERC721OperatorFixture.sol
+set-approval-for-all	solady-erc1155-safe	SoladyMultiTokenFixture	fixtures/set-approval-for-all/c-safe-impl/SoladyERC1155Fixture.sol
+eip7702-delegation	binance14-victim	BinanceVulnerableAccount	fixtures/eip7702-delegation/b-incident/BinanceSweeperClone.sol
+eip7702-delegation	qnt-pool-7702-victim	VulnerableBatchExecutorDelegate	fixtures/eip7702-delegation/b-incident/QntPool7702Clone.sol
+eip7702-delegation	sven-eth-victim	SvenVulnerableAccount	fixtures/eip7702-delegation/b-incident/SvenDelegateClone.sol
+eip7702-delegation	oz-accesscontrol-exec-safe	OzAccessControlExecutorWallet	fixtures/eip7702-delegation/c-safe-impl/OzAccessControlExecutorWallet.sol
+eip7702-delegation	solady-erc7821-safe	SoladyErc7821Wallet	fixtures/eip7702-delegation/c-safe-impl/SoladyErc7821Wallet.sol
+eip7702-delegation	solady-handover-safe	SoladyHandoverDelegate	fixtures/eip7702-delegation/c-safe-impl/SoladyHandoverDelegate.sol
+eip7702-delegation	solady-initguard-safe	SoladyInitGuardDelegate	fixtures/eip7702-delegation/c-safe-impl/SoladyInitGuardDelegate.sol
+eip7702-delegation	solady-ownableroles-exec-safe	SoladyRolesDelegate	fixtures/eip7702-delegation/c-safe-impl/SoladyRolesDelegate.sol
+# permit/permit2 c-safe + 1 incident variant sharing a first-party wrapper subject
+# (per-fixture rule: a real first-party wrapper -> INCLUDE; same-subject convention in header applies):
+permit2-phishing	link-permit2-victim	ToyPermit2	src/ToyPermit2.sol
+permit-phishing	oz-permit-deadline-safe	OZERC20PermitFixture	fixtures/permit-phishing/c-safe-impl/oz-permit-safe/OZERC20PermitFixture.sol
+permit-phishing	oz-permit-nonce-replay-safe	OZERC20PermitFixture	fixtures/permit-phishing/c-safe-impl/oz-permit-safe/OZERC20PermitFixture.sol
+permit-phishing	solady-permit-bounded-safe	SoladyTokenFixture	fixtures/approve-drainer/c-safe-impl/SoladyERC20Fixture.sol
+permit-phishing	solady-permit-deadline-safe	SoladyTokenFixture	fixtures/approve-drainer/c-safe-impl/SoladyERC20Fixture.sol
+permit-phishing	solady-permit-nonce-replay-safe	SoladyTokenFixture	fixtures/approve-drainer/c-safe-impl/SoladyERC20Fixture.sol
+permit2-phishing	permit2-batch-scoped-safe	Permit2SafeToken	fixtures/permit2-phishing/c-safe-impl/scoped-permit2-safe/Permit2SafeToken.sol
+permit2-phishing	permit2-expiration-safe	Permit2SafeToken	fixtures/permit2-phishing/c-safe-impl/scoped-permit2-safe/Permit2SafeToken.sol
+permit2-phishing	permit2-invalidate-nonce-safe	Permit2SafeToken	fixtures/permit2-phishing/c-safe-impl/scoped-permit2-safe/Permit2SafeToken.sol
+permit2-phishing	permit2-lockdown-safe	Permit2SafeToken	fixtures/permit2-phishing/c-safe-impl/scoped-permit2-safe/Permit2SafeToken.sol
+permit2-phishing	permit2-sigdeadline-safe	Permit2SafeToken	fixtures/permit2-phishing/c-safe-impl/scoped-permit2-safe/Permit2SafeToken.sol
+# near-collision flipped to INCLUDE per M (real scanned first-party file, expected TN):
+address-poisoning	oz-erc20-benign-nearcollision-safe	OZERC20Fixture	fixtures/approve-drainer/c-safe-impl/OZERC20Fixture.sol

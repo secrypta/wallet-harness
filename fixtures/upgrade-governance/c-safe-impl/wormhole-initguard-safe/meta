@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe implementation.
+# split=holdout: minimized clone of Wormhole's SECURE (post-fix) state - the wal detectors
+# were NEVER tuned against it. An honest PRECISION check and the SAFE half of the
+# vulnerable->safe pair with upgrade-governance/b-incident/wormhole-uninit-impl-victim.
+# Key is (vector, target); the harness emits
+#   "[upgrade-governance] target=wormhole-initguard-safe verdict=...".
+vector=upgrade-governance
+tier=c
+target=wormhole-initguard-safe
+label=safe
+split=holdout
+test=test/RealSafeWormholeInitGuardHoldout.t.sol
+provenance=minimized MIT clone of Wormhole's post-fix secure core (per-implementation initializedImplementations re-init guard; impl initialized/locked as fix tx 0x9acb... ensured); genuine-distinct from OZ Initializable; pairs with wormhole-uninit-impl-victim; Apache-2.0 attribution to wormhole-foundation/wormhole; see PROVENANCE.md

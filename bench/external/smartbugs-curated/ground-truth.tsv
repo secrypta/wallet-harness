@@ -1,0 +1,28 @@
+# External ground-truth: SmartBugs-Curated `access_control` category vs drain-scan scope.
+# split = external  (NOT in bench/dataset/manifest.tsv, NOT scored by the wal Foundry harness).
+# Upstream: smartbugs/smartbugs-curated @ 230e649123477eff332742a59a1c7cc6dc286cab (retrieved 2026-11-14)
+# Repo code is Apache-2.0; each contract keeps its ORIGINAL upstream license (column `license`).
+# gt_* = upstream SmartBugs annotation (category + vulnerable line numbers, original 0.4 source).
+# in_scope = does the bug fall inside drain-scan's remit (approval / signature / delegatecall /
+#            upgrade / init-hijack[R12] drain)? "no" => scanner silence is a SCOPE boundary, not a miss.
+# imported = file copied into this repo (license-clean + portable); else referenced by URL only.
+# scanner  = drain-scan with R12 (scan-d d54e0bb, solc 0.8.17), run read-only 2026-11-14. Line = ported file.
+# columns: file	original_source	license	gt_lines	our_rule	split	in_scope	imported	scanner_result
+FibonacciBalance.sol	sigp/solidity-security-blog	CC-BY-4.0	31,38	R7/R8 delegatecall	external	yes	yes(0.8-port)	FLAG R7+R8 @ withdraw,fallback (match, both delegatecall sites)
+proxy.sol	SWC-112	MIT	19	R7/R8 delegatecall	external	yes	in ../swc-xval	FLAG R7+R8 (match; see ../swc-xval)
+incorrect_constructor_name1.sol	crytic/not-so-smart-contracts	Apache-2.0	20	R12 init-hijack	external	yes	yes(0.8-port)	FLAG R12 @ IamMissing (match)
+incorrect_constructor_name2.sol	SWC-118	MIT	18	R12 init-hijack	external	yes	yes(0.8-port)	FLAG R12 @ missing (match)
+incorrect_constructor_name3.sol	SWC-118	MIT	17	R12 init-hijack	external	yes	yes(0.8-port)	FLAG R12 @ Constructor (match)
+multiowned_vulnerable.sol	SWC-registry test_cases	MIT	38	R12 init-hijack	external	yes	yes(0.8-port)	FLAG R12 @ newOwner (match)
+unprotected0.sol	crytic/not-so-smart-contracts	Apache-2.0	25	R12 init-hijack	external	yes	yes(0.8-port)	FLAG R12 @ changeOwner (match)
+rubixi.sol	crytic/not-so-smart-contracts	Apache-2.0	23,24	R12 init-hijack	external	yes	yes(0.8-port)	FLAG R12 @ DynamicPyramid (match)
+wallet_03_wrong_constructor.sol	SWC-105	MIT	19,20	R12 init-hijack	external	yes	yes(0.8-port)	FLAG R12 @ initWallet (match)
+parity_wallet_bug_2.sol	SWC-106	MIT	226,233	R12 init-hijack	external	yes	no(impractical port)	referenced - WalletLibrary (~200 LOC); R12 class; Parity carried as real-incident holdout
+parity_wallet_bug_1.sol	paritytech/parity-ethereum	GPL-3.0	223,437	R7/init (R12-ish)	external	partial	no(GPL copyleft)	referenced only (not vendored)
+phishable.sol	sigp/solidity-security-blog	CC-BY-4.0	20	tx.origin auth	external	no	yes(0.8-port)	CLEAN (out-of-scope confirmed)
+mycontract.sol	consensys/smart-contract-best-practices	unverified(not vendored)	20	tx.origin auth	external	no	no(license+scope)	referenced only
+simple_suicide.sol	SWC-registry test_cases	MIT	12,13	unprotected selfdestruct	external	no	yes(0.8-port)	CLEAN (out-of-scope; no authority-role install)
+wallet_02_refund_nosub.sol	SWC-105	MIT	36	refund logic drain	external	no	yes(0.8-port)	CLEAN (out-of-scope; state-update logic bug)
+wallet_04_confused_sign.sol	SWC-105	MIT	30	comparison logic bug	external	no	yes(0.8-port)	CLEAN (out-of-scope; comparison bug, non-exploitable after port)
+arbitrary_location_write_simple.sol	SWC-124	MIT	27	arbitrary storage write	external	no	no(0.4-only semantics)	not run - array `.length--` underflow write removed in >=0.5; not portable without destroying the bug
+mapping_write.sol	SWC-124	MIT	20	arbitrary storage write	external	no	no(0.4-only semantics)	not run - array `.length =` assignment removed in >=0.5; not portable without destroying the bug

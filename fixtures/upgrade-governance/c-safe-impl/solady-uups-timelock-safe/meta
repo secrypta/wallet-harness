@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady UUPS is an independent impl the wal detectors were NEVER tuned against,
+# so this is an honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[upgrade-governance] target=solady-uups-timelock-safe verdict=...".
+vector=upgrade-governance
+tier=c
+target=solady-uups-timelock-safe
+label=safe
+split=holdout
+test=test/RealSafeUpgradeGovernanceSolady.t.sol
+provenance=Solady v0.1.22 UUPSUpgradeable (MIT) behind an OZ v5.1.0 TimelockController authority; instant single-key upgrade reverts; see PROVENANCE.md

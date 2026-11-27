@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine
+# independence); it exercises OZ SafeERC20 - a canonical allowance helper the detectors were
+# not tuned against. Honest PRECISION check on real safe code (0 FP).
+# Key is (vector, target); the harness emits "[approve-drainer] target=oz-safeerc20-safe verdict=...".
+vector=approve-drainer
+tier=c
+target=oz-safeerc20-safe
+label=safe
+split=holdout
+test=test/RealSafeApproveRound2.t.sol
+provenance=OpenZeppelin Contracts v5.1.0 SafeERC20 (forceApprove/safeDecreaseAllowance) + ERC20 (MIT, commit 69c8def5); canonical bounded-approve-and-revoke helper; harness stays silent; see PROVENANCE.md

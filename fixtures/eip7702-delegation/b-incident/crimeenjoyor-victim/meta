@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=crimeenjoyor-victim verdict=...".
+vector=eip7702-delegation
+tier=b
+target=crimeenjoyor-victim
+label=vuln
+test=test/CrimeEnjoyorIncident.t.sol
+provenance=Wintermute "CrimeEnjoyor" reusable EIP-7702 sweeper (Pectra 2025); see PROVENANCE.md

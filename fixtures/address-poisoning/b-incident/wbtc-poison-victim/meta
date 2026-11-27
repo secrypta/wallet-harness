@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Independent from the dev address-poisoning incident (Dec 2024 USDT): a distinct, earlier,
+# separately-documented event (May 2024 WBTC) with its OWN on-chain addresses.
+# Key is (vector, target); the harness emits "[address-poisoning] target=wbtc-poison-victim verdict=...".
+vector=address-poisoning
+tier=b
+target=wbtc-poison-victim
+label=vuln
+split=holdout
+test=test/WbtcAddressPoisonIncident.t.sol
+provenance=WBTC "dust"/address-poisoning drain, 2024-05-03 (~1,155 WBTC, ~$68M): victim copied a look-alike recipient from poisoned history; look-alike 0xd9A1C3..853a91 shares the displayed prefix/suffix of the real counterparty 0xd9A1b0..853a91 but differs fully; funds later largely returned. Sources: Cointelegraph, The Block, CertiK, PeckShield, Chainalysis; see PROVENANCE.md

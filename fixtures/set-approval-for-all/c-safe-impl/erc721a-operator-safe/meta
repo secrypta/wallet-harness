@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: ERC721A operator-for-all authorization is real, widely-deployed published code
+# wal was NEVER tuned against; honest PRECISION check on unseen safe code. Distinct SURFACE/codebase
+# from the OZ and Solady NFT holdouts: ERC721A is an INDEPENDENT third implementation (packed
+# sequential ownership + batch mint) with its own operator-approval + transfer-auth path.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=erc721a-operator-safe verdict=...".
+vector=set-approval-for-all
+tier=c
+target=erc721a-operator-safe
+label=safe
+split=holdout
+test=test/RealSafeErc721AOperatorHoldout.t.sol
+provenance=ERC721A v4.3.0 (Chiru Labs, MIT, tag v4.3.0 commit 6f8a82a) operator-for-all; an operator not granted setApprovalForAll cannot sweep the holder's tokens (TransferCallerNotOwnerNorApproved), BLOCKED; see PROVENANCE.md

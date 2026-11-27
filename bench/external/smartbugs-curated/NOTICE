@@ -1,0 +1,60 @@
+NOTICE - attribution for third-party material in bench/external/smartbugs-curated/
+========================================================================================
+
+This directory cross-validates the drain-scan scanner against an INDEPENDENT labelled
+corpus: the `access_control` category of SmartBugs-Curated. It is split=external - NOT part
+of the drain-bench real-incident corpus, NOT in bench/dataset/manifest.tsv, and it does not
+affect any benchmark number.
+
+Upstream dataset
+----------------
+  SmartBugs-Curated - https://github.com/smartbugs/smartbugs-curated
+  Commit            : 230e649123477eff332742a59a1c7cc6dc286cab  (retrieved 2026-11-14)
+  Repository code   : Apache License 2.0
+
+IMPORTANT: the SmartBugs repository is Apache-2.0, but each example contract retains the
+license of its ORIGINAL source. A per-file license review was performed (see ground-truth.tsv
+and each file header) before copying any `.sol` into this MIT repository. Only license-clean,
+portable files were imported; others are referenced by URL + commit only.
+
+Imported files and their original licenses (all ported ^0.4.x -> ^0.8.17; see per-file headers)
+-----------------------------------------------------------------------------------------------
+  MIT (SmartContractSecurity/SWC-registry):
+    access_control/incorrect_constructor_name2_0.8.sol   (SWC-118)
+    access_control/incorrect_constructor_name3_0.8.sol   (SWC-118)
+    access_control/multiowned_vulnerable_0.8.sol         (test_cases)
+    access_control/simple_suicide_0.8.sol                (test_cases)
+    access_control/wallet_02_refund_nosub_0.8.sol        (SWC-105)
+    access_control/wallet_03_wrong_constructor_0.8.sol   (SWC-105)
+    access_control/wallet_04_confused_sign_0.8.sol       (SWC-105)
+
+  Apache-2.0 (crytic/not-so-smart-contracts, formerly trail-of-bits; Copyright Trail of Bits):
+    access_control/incorrect_constructor_name1_0.8.sol
+    access_control/unprotected0_0.8.sol
+    access_control/rubixi_0.8.sol
+      Portions derived from crytic/not-so-smart-contracts, licensed under the Apache License,
+      Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0). No upstream NOTICE file is
+      distributed with that subdirectory; the only modifications are the pragma ports in headers.
+
+  CC-BY-4.0 (sigp/solidity-security-blog, (c) Adrian Manning; attribution preserved in header):
+    access_control/FibonacciBalance_0.8.sol
+    access_control/phishable_0.8.sol
+
+NOT copied (referenced only, by URL + commit in ground-truth.tsv)
+-----------------------------------------------------------------
+  access_control/parity_wallet_bug_1.sol
+      paritytech/parity-ethereum - GPL-3.0 (copyleft). This repository is MIT; GPL-3.0 code is
+      NOT vendored. The Parity multisig incident itself is independently carried in the
+      real-incident corpus from an authoritative post-mortem.
+  access_control/parity_wallet_bug_2.sol
+      SWC-106 WalletLibrary, MIT. License-clean but ~200 LOC of 0.4.9 (`var`/`throw`/`suicide`/
+      inline assembly stubs); a faithful 0.8 port is impractical and low-fidelity. It is the R12
+      (init-hijack) class, already represented by the smaller imported R12 fixtures and by the
+      Parity real-incident holdout - referenced rather than ported.
+  access_control/arbitrary_location_write_simple.sol, mapping_write.sol
+      SWC-124, MIT. Their vulnerability depends on writable array `.length` (removed in >=0.5),
+      so they cannot be ported to 0.8 without destroying the bug. Referenced only.
+  access_control/mycontract.sol
+      consensys/smart-contract-best-practices. Upstream license not confirmed compatible for
+      vendoring into an MIT repo (content is share-alike-style); and the bug (tx.origin auth) is
+      out of drain-scan's scope. Referenced only.

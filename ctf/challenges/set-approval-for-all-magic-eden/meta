@@ -1,0 +1,8 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=set-approval-for-all
+title=Patch the Magic Eden Payment Processor forwarder spoof
+difficulty=advanced
+interface=forward(address target, bytes data, address from)
+corpus_ref=corpus/set-approval-for-all.md
+# Incident facts verbatim from fixtures/set-approval-for-all/b-incident/magic-eden-pp2-victim/PROVENANCE.md
+incident=Magic Eden / Limit Break Payment Processor V2 drain, 2026-09-24 (~$2.8M; ~622 WETH + NFTs worth $2.5M+ across Ethereum/Polygon/Base/Arbitrum/ApeChain). Many wallets still held a standing setApprovalForAll(processor, true) from 2024 listings. The processor handled meta-transactions via an ERC-2771-style trusted-forwarder pattern and TRUSTED the sender address appended to calldata by an approved forwarder WITHOUT authenticating it, so a caller routing through the trusted forwarder could spoof the acting party to be any victim; the processor then pulled the victim's NFTs with the victim's lingering operator approval. Attacker EOA 0x0e9e147af2108e5354efb28740cade8e7422d1c7; PP V2 0x9A1D00bEd7CD04BCDA516d721A596eb22Aac6834; example tx 0x9050e28ed880a960ddaa248373c104e41fa847cde7a3774d003a71c2f74193d3, block 26047513.

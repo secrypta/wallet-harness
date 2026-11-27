@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=binance14-victim verdict=...".
+vector=eip7702-delegation
+tier=b
+target=binance14-victim
+label=vuln
+split=holdout
+test=test/Binance14DelegationIncident.t.sol
+provenance=Binance 14 EIP-7702 hot-wallet drain, 2026-10-29 (largest crypto theft on record; ~$2.5B first Binance 14 drain, multi-billion across chains). Compromised MPC signing service signed a type-4 SET_CODE auth delegating Binance 14 (0x28C6c06298d514Db089934071355E5743bf21d60) to sweeper 0x63e842B054Bd624a465454D533C33F573e9c6fAe (hardcoded attacker caller). Type-4 tx 0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b (50 auths); first drain 0x53bd38b816c23e74134786c29a8c18d792777998a3b9326047b583100e88e2f3; see PROVENANCE.md

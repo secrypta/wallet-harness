@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady EIP-2612 permit is an independent impl wal was NEVER tuned against;
+# NONCE-REPLAY property (distinct from solady-permit-safe=forged, solady-permit-deadline-safe=deadline).
+# Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[permit-phishing] target=solady-permit-nonce-replay-safe verdict=...".
+vector=permit-phishing
+tier=c
+target=solady-permit-nonce-replay-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyPermitRound5Holdout.t.sol
+provenance=Solady ERC20 EIP-2612 permit (Vectorized/solady v0.1.22, commit 65e87c72, MIT); a captured permit signature replayed a second time is rejected (nonce consumed -> recovered signer != owner -> InvalidPermit), so a phished signature cannot be re-used to re-grant allowance; harness stays silent; see PROVENANCE.md

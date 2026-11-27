@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident (class-level).
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=ethsign-blind-victim verdict=...".
+vector=blind-eth-sign
+tier=b
+target=ethsign-blind-victim
+label=vuln
+test=test/BlindEthSignIncident.t.sol
+provenance=legacy eth_sign blind signing (MetaMask MIP-3 removal; Safe post-Bybit removal); see PROVENANCE.md

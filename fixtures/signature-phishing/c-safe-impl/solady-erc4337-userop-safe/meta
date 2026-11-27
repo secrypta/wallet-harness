@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady ERC4337 account userOp signature validation is real published code wal
+# was NEVER tuned against; honest PRECISION check on unseen safe code. Distinct SURFACE from the
+# direct-signature holdouts: canonical ERC-4337 account-abstraction userOp validation.
+# Key is (vector, target); the harness emits "[signature-phishing] target=solady-erc4337-userop-safe verdict=...".
+vector=signature-phishing
+tier=c
+target=solady-erc4337-userop-safe
+label=safe
+split=holdout
+test=test/RealSafeErc4337UserOpHoldout.t.sol
+provenance=Solady ERC4337 (v0.1.22, MIT) deployed via ERC4337Factory; a forged userOp signature fails _validateSignature (returns 1 SIG_VALIDATION_FAILED), EntryPoint never executes, BLOCKED; see PROVENANCE.md

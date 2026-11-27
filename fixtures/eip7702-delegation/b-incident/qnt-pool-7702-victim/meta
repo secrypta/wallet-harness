@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=qnt-pool-7702-victim verdict=...".
+vector=eip7702-delegation
+tier=b
+target=qnt-pool-7702-victim
+label=vuln
+split=holdout
+test=test/QntPool7702Incident.t.sol
+provenance=QNT reserve-pool drain via a 7702-delegated ADMIN EOA, 2026-04-28 (1,974.546547972979064297 QNT moved pool->attacker in the pinned tx, ~$124.9K; SlowMist reported ~1,988.5 QNT/~54.93 ETH total; Ethereum). Admin EOA 0xc6ddf90790b433743bd050c1d1d45f673a3413f4 EIP-7702-delegated its code to a BatchExecutor 0x044dc3e39c566a95011e272ec800dbd2cc9c057c whose batch(address[],bytes[]) (selector 0xf38f59d7) is PUBLIC with no access control; attacker 0xf5604f6545d5827a01801ffa5c48f5c61258fa01 drove it to call pool 0xdd4f556e1b42d9b29294a7eeb6d6a5059bbbe16a forwardTransaction (admin-by-address trust passed). Pinned exploit tx 0xef9994ac862318ccf3ebdb66c181bb159651373b945aea59a966608d7b98684f, block 24978818; see PROVENANCE.md

@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code.
+# Key is (vector, target); the harness emits "[$vector] target=$target verdict=...".
+vector=permit-phishing
+tier=c
+target=oz-permit-safe
+label=safe
+test=test/RealSafePermit.t.sol
+provenance=OpenZeppelin Contracts v5.1.0 ERC20Permit/EIP712/ECDSA (MIT), bounded-permit flow; see PROVENANCE.md

@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[address-poisoning] target=usdt-poison-victim verdict=...".
+vector=address-poisoning
+tier=b
+target=usdt-poison-victim
+label=vuln
+test=test/UsdtAddressPoisonIncident.t.sol
+provenance=Dec 2024 ~$50M USDT address-poisoning (victim paid a look-alike); see PROVENANCE.md

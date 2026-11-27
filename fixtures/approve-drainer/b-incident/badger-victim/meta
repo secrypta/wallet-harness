@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[approve-drainer] target=badger-victim verdict=...".
+vector=approve-drainer
+tier=b
+target=badger-victim
+label=vuln
+test=test/BadgerIncident.t.sol
+provenance=BadgerDAO front-end approval-injection drain, 2021-12-02; see PROVENANCE.md

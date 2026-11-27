@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code.
+# Real OZ v5.1.0 ERC20Permit, NONCE-REPLAY property (distinct from oz-permit-safe's
+# bounded-allowance and oz-permit-deadline-safe's deadline). OZ is the reference impl (not holdout).
+# Key is (vector, target); the harness emits "[permit-phishing] target=oz-permit-nonce-replay-safe verdict=...".
+vector=permit-phishing
+tier=c
+target=oz-permit-nonce-replay-safe
+label=safe
+test=test/RealSafePermitRound4.t.sol
+provenance=OpenZeppelin Contracts v5.1.0 ERC20Permit + Nonces (MIT, commit 69c8def5); a captured permit signature replayed a second time is rejected (nonce already consumed -> ERC2612InvalidSigner), so a phished signature cannot be re-used to re-grant allowance; harness stays silent; see PROVENANCE.md

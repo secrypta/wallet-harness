@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Incident-derived: patch a documented real drain.
+vector=permit-phishing
+title=Patch the Lixir forged-permit drain
+difficulty=core
+interface=permit(address owner, address spender, uint256 value, uint256 deadline, uint8 v, bytes32 r, bytes32 s)
+corpus_ref=corpus/permit-phishing.md
+# Incident facts verbatim from fixtures/permit-phishing/b-incident/lixir-permit-victim/PROVENANCE.md
+incident=Lixir vault-token forged-permit approval drain, 2026-06-25 01:21:23 UTC (Ethereum); attack tx 0x17026faca0b8e4cb7531e4fb277c390eb165e81229628e0192923ad1d90a41da (block 25391316); one non-owner signature reused across 41 permit calls over 35 owners, then transferFrom; realizable loss ~$12.3K (darknavy post-mortem)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.

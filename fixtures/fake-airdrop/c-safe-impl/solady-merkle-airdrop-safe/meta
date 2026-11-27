@@ -1,0 +1,14 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady MerkleProofLib is an independent canonical impl wal was NEVER tuned
+# against; honest PRECISION check on unseen safe code. PRECISION-SIDE safe holdout: no clean
+# independent vuln fake-airdrop incident exists at our provenance bar (two extended searches),
+# so this vector's independent holdout is safe-only - the harness MUST stay silent (0 FP).
+# Independent from the dev oz-safe-claim fixture (that uses OpenZeppelin; this uses Solady).
+# Key is (vector, target); the harness emits "[fake-airdrop] target=solady-merkle-airdrop-safe verdict=...".
+vector=fake-airdrop
+tier=c
+target=solady-merkle-airdrop-safe
+label=safe
+split=holdout
+test=test/RealSafeMerkleAirdropHoldout.t.sol
+provenance=Solady MerkleProofLib (Vectorized/solady v0.1.22, MIT) under a canonical Merkle-gated airdrop distributor; an account absent from the tree / a wrong amount / a forged proof cannot claim; see PROVENANCE.md

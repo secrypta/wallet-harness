@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=magic-eden-pp2-victim verdict=...".
+vector=set-approval-for-all
+tier=b
+target=magic-eden-pp2-victim
+label=vuln
+split=holdout
+test=test/MagicEdenPaymentProcessorIncident.t.sol
+provenance=Magic Eden / Limit Break Payment Processor V2 drain, 2026-09-24 (~$2.8M; WETH + NFTs across Ethereum/Polygon/Base/..; ERC-2771 forwarder sender-spoof + victims' lingering setApprovalForAll from 2024 listings). Attacker EOA 0x0e9e147af2108e5354efb28740cade8e7422d1c7; PP V2 0x9A1D00bEd7CD04BCDA516d721A596eb22Aac6834; example tx 0x9050e28ed880a960ddaa248373c104e41fa847cde7a3774d003a71c2f74193d3; see PROVENANCE.md

@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=gondi-bundler-victim verdict=...".
+vector=set-approval-for-all
+tier=b
+target=gondi-bundler-victim
+label=vuln
+split=holdout
+test=test/GondiBundlerIncident.t.sol
+provenance=Gondi NFT-lending "Purchase Bundler" drain, 2026-03-09 (~$230K, ~78 NFTs / ~40 txs, Ethereum; unrestricted buy pulled idle NFTs via victims' lingering setApprovalForAll). Attacker EOA 0x8d171c74c85cd2ec9f38143dd5d8a7c89df47051; bundler 0xe95e3cfc4939d6d98dbda31aafe950c3ee84d73c; example tx 0x83bac5d4b222b97f9734637c072589da648941b8a884ce1a61324dc0449e6a06; see PROVENANCE.md

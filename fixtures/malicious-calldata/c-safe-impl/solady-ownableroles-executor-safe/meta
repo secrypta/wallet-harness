@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real Solady OwnableRoles code the wal detectors were NEVER tuned against - an
+# honest PRECISION check: an owner/role-gated arbitrary-call executor must not read as an
+# arbitrary-call-injection sink. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[malicious-calldata] target=solady-ownableroles-executor-safe verdict=...".
+vector=malicious-calldata
+tier=c
+target=solady-ownableroles-executor-safe
+label=safe
+split=holdout
+test=test/RealSafeMaliciousCalldata.t.sol
+provenance=Solady v0.1.22 OwnableRoles (MIT); arbitrary-call executor gated by onlyOwnerOrRoles, unauthorized caller cannot inject against a standing approval; see PROVENANCE.md

@@ -1,0 +1,16 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: exercises the REAL vendored Uniswap Permit2 via its SignatureTransfer path
+# (permitTransferFrom) - a DISTINCT surface from the dev scoped-permit2-safe fixture, which
+# uses the AllowanceTransfer path (permit + transferFrom). Honest PRECISION check on a code
+# path the detectors were not tuned against (0 FP). PRECISION-SIDE safe holdout: it pairs with
+# this vector's independent VULN holdout link-permit2-victim (a real on-chain-verified Permit2
+# phishing drain, b-incident), so permit2-phishing now has both a real vuln and a real safe
+# holdout.
+# Key is (vector, target); the harness emits "[permit2-phishing] target=permit2-sigtransfer-safe verdict=...".
+vector=permit2-phishing
+tier=c
+target=permit2-sigtransfer-safe
+label=safe
+split=holdout
+test=test/RealSafePermit2SigTransferHoldout.t.sol
+provenance=Real vendored Uniswap Permit2 (MIT, commit cc56ad0) SignatureTransfer / permitTransferFrom; a one-time, amount-bounded, deadline-scoped signature transfers only the signed amount and cannot be over-drawn or replayed; see PROVENANCE.md

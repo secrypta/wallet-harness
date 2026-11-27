@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (a): our MIT toy pair.
+# Key is (vector, target); the harness emits "[signature-phishing] target=bound-sig-safe verdict=...".
+# Rule R5 (signature-missing-deadline/nonce/domain): EIP-712 domain + nonce + deadline -> replay reverts.
+vector=signature-phishing
+tier=a
+target=bound-sig-safe
+label=safe
+rule=R5
+test=test/SignatureReplay.t.sol
+provenance=synthetic toy target authored in this repo (MIT); no external source

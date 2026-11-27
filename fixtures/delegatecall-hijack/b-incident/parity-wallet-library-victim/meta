@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=parity-wallet-library-victim verdict=...".
+vector=delegatecall-hijack
+tier=b
+target=parity-wallet-library-victim
+label=vuln
+split=holdout
+test=test/ParityWalletIncident.t.sol
+provenance=Parity multisig delegatecall-hijack (unguarded initWallet via shared library), 2017-07-19; see PROVENANCE.md

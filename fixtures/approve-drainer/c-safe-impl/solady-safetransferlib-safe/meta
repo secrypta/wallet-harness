@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady SafeTransferLib + Solady ERC20 are independent impls the wal detectors
+# were NEVER tuned against, so this is an honest PRECISION check on unseen safe code.
+# Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[approve-drainer] target=solady-safetransferlib-safe verdict=...".
+vector=approve-drainer
+tier=c
+target=solady-safetransferlib-safe
+label=safe
+split=holdout
+test=test/RealSafeSafeTransferLibHoldout.t.sol
+provenance=Solady SafeTransferLib.safeApprove (Vectorized/solady v0.1.22, commit 65e87c72, MIT) scoped approve-and-revoke over a Solady ERC20 token; bounded allowance, no lingering surface, over-draw reverts; harness stays silent; see PROVENANCE.md

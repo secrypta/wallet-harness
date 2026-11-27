@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Facts verified against dev.to/pandasecurity + SlowMist alert (on-chain not manually re-verified).
+# Victim addresses are truncated in the sources -> the victim is an explicit stand-in; attacker /
+# helper / Settlement / tx are the real documented identifiers, labels only (never a detection signal).
+# Key is (vector, target); the harness emits "[approve-drainer] target=pennysia-victim verdict=...".
+vector=approve-drainer
+tier=b
+target=pennysia-victim
+label=vuln
+split=holdout
+test=test/PennysiaIncident.t.sol
+provenance=Pennysia Settlement stale-approval drain, 2026-11-12 13:59:11 UTC (~$5,131 / 4 wallets); executeSwap(route=venue+raw calldata) -> transferFrom spends victim's stale approval to Settlement; arbitrary-callee / R11 class; source dev.to/pandasecurity + SlowMist; see PROVENANCE.md

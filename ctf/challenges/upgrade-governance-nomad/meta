@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Mirrors a benchmark tier-b incident as a "patch the drain" puzzle.
+vector=upgrade-governance
+title=Patch the Nomad Bridge re-init drain
+difficulty=core
+interface=process(bytes32 provenRoot, address to, uint256 amount)
+# incident facts verbatim from fixtures/upgrade-governance/b-incident/nomad-reinit-root-victim/PROVENANCE.md
+incident=Nomad Bridge exploit, 2022-08-01, Ethereum, ~$190M drained; drain tx 0xa5fe9d044e4f3e5aa5bc4c0709333cd2190cba0f4e7f16bcf73f49f83e4a5460 (Nomad Replica proxy 0x5d94309e5a0090b165fa4181519701637b6daeba)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/upgrade-governance.md

@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real OpenZeppelin Governor stack the wal detectors were NEVER tuned against -
+# an honest PRECISION check on token-weighted on-chain governance. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[upgrade-governance] target=oz-governor-safe verdict=...".
+vector=upgrade-governance
+tier=c
+target=oz-governor-safe
+label=safe
+split=holdout
+test=test/RealSafeUpgradeGovernance.t.sol
+provenance=OpenZeppelin v5.1.0 Governor + GovernorVotes + QuorumFraction + GovernorTimelockControl (MIT); protected op requires a passed token vote (propose->vote->queue->execute), no instant single-key swap; see PROVENANCE.md

@@ -1,0 +1,7 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=fake-airdrop
+title=Claim flow approves the valuable asset instead of the gift
+difficulty=core
+interface=claimGift(address giftToken, address realToken, address claimHelper)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/fake-airdrop.md

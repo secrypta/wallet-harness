@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): reference-impl of the canonical defense.
+# Key is (vector, target); the harness emits "[malicious-calldata] target=simulated-exec-safe verdict=...".
+vector=malicious-calldata
+tier=c
+target=simulated-exec-safe
+label=safe
+test=test/RealSafeCalldata.t.sol
+provenance=reference-impl of net-effect transaction simulation (Fire/Blockaid/Pocket Universe class); see PROVENANCE.md

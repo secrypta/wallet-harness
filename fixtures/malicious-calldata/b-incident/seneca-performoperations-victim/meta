@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[malicious-calldata] target=seneca-performoperations-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=seneca-performoperations-victim
+label=vuln
+split=holdout
+test=test/SenecaChamberIncident.t.sol
+provenance=Seneca Protocol exploit 2024-02-28 Ethereum ~$6.4M; performOperations dispatches a CALL action to an internal _call executing arbitrary callee+calldata unvalidated; Chamber holds approvals -> transferFrom drains users; attack tx 0x23fcf9d4...b701286; see PROVENANCE.md

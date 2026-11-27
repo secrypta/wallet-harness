@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): canonical safe reference impl.
+# Key is (vector, target); the harness emits "[address-poisoning] target=verified-send-safe verdict=...".
+vector=address-poisoning
+tier=c
+target=verified-send-safe
+label=safe
+test=test/RealSafeAddressPoisoning.t.sol
+provenance=reference impl of canonical full-address verification (no 3rd-party lib exists); see PROVENANCE.md

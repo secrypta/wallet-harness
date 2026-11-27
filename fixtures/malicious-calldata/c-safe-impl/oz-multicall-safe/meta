@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real OZ library code the wal detectors were NEVER tuned against - an honest
+# PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[malicious-calldata] target=oz-multicall-safe verdict=...".
+vector=malicious-calldata
+tier=c
+target=oz-multicall-safe
+label=safe
+split=holdout
+test=test/RealSafeMaliciousCalldata.t.sol
+provenance=OpenZeppelin v5.1.0 Multicall (MIT) self-only delegatecall; no arbitrary-external-call sink; see PROVENANCE.md

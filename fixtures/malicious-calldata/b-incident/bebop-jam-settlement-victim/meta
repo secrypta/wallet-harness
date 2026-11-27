@@ -1,0 +1,14 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Vector: malicious-calldata (R11 class - arbitrary caller-supplied interactions spend a standing
+# approval). No victim signed anything: the attacker's order carries an EMPTY signature and is
+# self-taken; the caller-supplied interactions do the draining. Same class as squid-multicall /
+# drainer-kit, NOT signature-phishing. (Relabeled from signature-phishing after M web-verification.)
+# Key is (vector, target); the harness emits "[malicious-calldata] target=bebop-jam-settlement-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=bebop-jam-settlement-victim
+label=vuln
+split=holdout
+test=test/BebopJamSettlementIncident.t.sol
+provenance=Bebop JamSettlement caller-supplied-interactions drain, Arbitrum 2025-08-12 (~$21K). A self-taken order with an EMPTY signature carried transferFrom interactions that spent victims' standing approvals to the settlement; signer-auth was never bound to the fund moves (arbitrary-callee / R11). Real tx 0xe5f8fe...b7619d; attacker 0x59537353..4abc91; vuln JamSettlement 0xbeb0b062..2F4ea6; source SuplabsYi post-mortem; see PROVENANCE.md

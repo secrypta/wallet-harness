@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident (MECHANISM-level).
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# MECHANISM-level (no public drain-tx hash; blastscan deprecated) - modeled like the corpus's
+# beanstalk/furucombo/li-fi/socket tier-b cases. See PROVENANCE.md for the explicit disclaimer.
+# Key is (vector, target); the harness emits "[permit-phishing] target=fwdeth-permit-victim verdict=...".
+vector=permit-phishing
+tier=b
+target=fwdeth-permit-victim
+label=vuln
+split=holdout
+test=test/FwDethPermitIncident.t.sol
+provenance=fwDETH (Few Wrapped Duo ETH) EIP-2612 permit phishing drain ~$35M on Blast, 2024-10-11; offline permit signature -> drain of 15,079 fwDETH in two stages (12,817.15 + 2,261.85); Angel Drainer; MECHANISM-level (NO public drain-tx hash, official blastscan.io deprecated); sources TheBlock + Lookonchain + BlockSec + SlowMist(Cosine) + CoinJournal; see PROVENANCE.md

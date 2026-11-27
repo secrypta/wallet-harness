@@ -1,0 +1,13 @@
+# EXAMPLE verdicts - FICTIONAL tool "acme-approve-lint v0.0-example".
+# Not a real tool and not a real result. This file exists only to demonstrate the
+# verdict schema and the results/<tool>/ layout. See README.md in this directory.
+#
+# Schema: [<vector>] target=<target> verdict=<VULNERABLE|BLOCKED>
+#
+# acme-approve-lint only understands the approve-drainer vector, so it reports on four
+# of those targets and says nothing about the rest of the corpus - those become coverage
+# gaps (MISS) when scored, which is the honest outcome for a narrowly-scoped tool.
+[approve-drainer] target=safe-wallet verdict=BLOCKED
+[approve-drainer] target=vulnerable-wallet verdict=VULNERABLE
+[approve-drainer] target=badger-victim verdict=VULNERABLE
+[approve-drainer] target=oz-safe-wallet verdict=BLOCKED

@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real Solady CREATE3 code the wal detectors were NEVER tuned against - an
+# honest PRECISION check on legitimate CREATE3 deterministic deployment. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[create2-metamorphic] target=solady-create3-safe verdict=...".
+vector=create2-metamorphic
+tier=c
+target=solady-create3-safe
+label=safe
+split=holdout
+test=test/RealSafeCreate2Metamorphic.t.sol
+provenance=Solady v0.1.22 CREATE3 (MIT) - deterministic deploy keyed on salt+deployer (code-independent), no selfdestruct/redeploy; see PROVENANCE.md

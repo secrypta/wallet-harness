@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady ERC1155 operator-for-all authorization is an independent impl wal was
+# NEVER tuned against; honest PRECISION check on unseen safe code. Scored on the holdout split.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=solady-erc1155-safe verdict=...".
+vector=set-approval-for-all
+tier=c
+target=solady-erc1155-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyERC1155Holdout.t.sol
+provenance=Solady ERC1155 operator-for-all (Vectorized/solady v0.1.22, MIT); un-approved operator sweep reverts NotOwnerNorApproved, BLOCKED; see PROVENANCE.md

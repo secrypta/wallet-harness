@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident class.
+# Key is (vector, target); the harness emits "[malicious-calldata] target=drainer-kit-victim verdict=...".
+vector=malicious-calldata
+tier=b
+target=drainer-kit-victim
+label=vuln
+test=test/DrainerKitIncident.t.sol
+provenance=drainer-kit hidden/mislabeled approval pattern (arXiv 2409.02386 + drainer-kit analyses); class-level, see PROVENANCE.md

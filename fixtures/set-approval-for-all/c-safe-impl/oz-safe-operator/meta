@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real code.
+# Key is (vector, target); the harness emits "[$vector] target=$target verdict=...".
+vector=set-approval-for-all
+tier=c
+target=oz-safe-operator
+label=safe
+test=test/RealSafe.t.sol
+provenance=OpenZeppelin Contracts v5.1.0 ERC721 (MIT), scoped-approve flow; see PROVENANCE.md

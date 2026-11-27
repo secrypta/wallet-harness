@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[approve-drainer] target=hedgey-victim verdict=...".
+vector=approve-drainer
+tier=b
+target=hedgey-victim
+label=vuln
+split=holdout
+test=test/HedgeyIncident.t.sol
+provenance=Hedgey Finance drain, 2024-04-19 (~$44.7M total; $2.1M ETH + $42.6M Arbitrum); ClaimCampaigns granted a standing ERC-20 approval to an unvalidated campaign-supplied locker and did NOT revoke it on cancel -> attacker transferFrom'd the contract's pooled balance; ETH attack tx 0x2606d459...1595739 Success block 19687890 2024-04-19 07:06:47 UTC moved 1,303,910.12 USDC from ClaimCampaigns 0xbc452fdc...3d511 to attacker 0xded2b1a4...81dda2; sources Halborn + CertiK + TechFlow + ImmuneBytes + Rekt, on-chain-verified; see PROVENANCE.md

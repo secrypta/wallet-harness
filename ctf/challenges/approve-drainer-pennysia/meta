@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Incident-derived: patch a documented real drain.
+vector=approve-drainer
+title=Patch the Pennysia Settlement arbitrary-route drain
+difficulty=advanced
+interface=executeSwap(address venue, bytes route)
+corpus_ref=corpus/approve-drainer.md
+# Incident facts verbatim from fixtures/approve-drainer/b-incident/pennysia-victim/PROVENANCE.md
+incident=Pennysia Settlement stale-approval drain, 2026-11-12 13:59:11 UTC (block 26399314, Ethereum); executeSwap takes a route = venue address + raw calldata and low-level-calls it from the Settlement's own context with no allow-listing; users had a stale approval to the Settlement, so an attacker crafted a route whose venue was the token and calldata was transferFrom(victim, Settlement, amount); attack tx 0x2716c50e450272240f68f2827bcb4a336c2ac520951e0e530154566c295b732d; vulnerable Settlement 0x3aad97e5a91b8e43b7dc830aceb004307678795e; ~$5,131 across 4 wallets; sources dev.to/pandasecurity + SlowMist
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.

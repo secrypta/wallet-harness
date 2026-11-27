@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: unmodified vendored Solady ERC4337 (account-abstraction) - the wal detectors
+# were NEVER tuned against it. An honest PRECISION check: a gated arbitrary-call executor must
+# not read as an arbitrary-call-injection sink.
+# Key is (vector, target); the harness emits
+#   "[malicious-calldata] target=solady-erc4337-executor-safe verdict=...".
+vector=malicious-calldata
+tier=c
+target=solady-erc4337-executor-safe
+label=safe
+split=holdout
+test=test/RealSafeErc4337ExecutorHoldout.t.sol
+provenance=unmodified vendored Solady ERC4337 (MIT); execute(target,value,data) gated by onlyEntryPointOrOwner (EntryPoint or owner), arbitrary-call injection reverts Unauthorized(); distinct account-abstraction gate; see PROVENANCE.md

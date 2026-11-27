@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady EIP-2612 permit is an independent impl wal was NEVER tuned against;
+# honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[permit-phishing] target=solady-permit-safe verdict=...".
+vector=permit-phishing
+tier=c
+target=solady-permit-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyHoldout.t.sol
+provenance=Solady ERC20 EIP-2612 permit (Vectorized/solady, MIT); forged signature rejected; see PROVENANCE.md

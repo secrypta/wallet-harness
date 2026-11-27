@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[signature-phishing] target=seaport-order-victim verdict=...".
+vector=signature-phishing
+tier=b
+target=seaport-order-victim
+label=vuln
+test=test/SeaportSignatureIncident.t.sol
+provenance=OpenSea migration phishing (2022) + Kevin Rose/Moonbirds (2023), Seaport/Wyvern order signatures; see PROVENANCE.md

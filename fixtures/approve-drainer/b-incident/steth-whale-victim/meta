@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[approve-drainer] target=steth-whale-victim verdict=...".
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+vector=approve-drainer
+tier=b
+target=steth-whale-victim
+label=vuln
+split=holdout
+test=test/StethWhaleIncident.t.sol
+provenance=2023-09-06 whale approval-phishing (~$24.24M: 9,579.21 stETH + 4,851 rETH); increaseAllowance -> transferFrom. Verified drain tx (stETH leg) 0xcbe7b32e...2f77913 Success 2023-09-06 17:31:35 UTC (Ethereum, block 18078908), victim 0x13e382...94179E, spender 0x4c10a4...120ab1 (Etherscan Fake_Phishing186944); sources PeckShield + SharkTeam + Cointelegraph/CryptoSlate + Etherscan Phish/Hack label; see PROVENANCE.md

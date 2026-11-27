@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[upgrade-governance] target=beanstalk-governance-victim verdict=...".
+vector=upgrade-governance
+tier=b
+target=beanstalk-governance-victim
+label=vuln
+split=holdout
+test=test/BeanstalkIncident.t.sol
+provenance=Beanstalk flash-loan governance takeover 2022-04-17 ~$182M; no-timelock/no-snapshot supermajority delegatecalls attacker proposal; mechanism-level, see PROVENANCE.md

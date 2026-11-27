@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady ERC6909 is an independent impl + a DIFFERENT allowance model (per-id
+# allowances) wal was NEVER tuned against; honest PRECISION check. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[approve-drainer] target=solady-erc6909-safe verdict=...".
+vector=approve-drainer
+tier=c
+target=solady-erc6909-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyApproveRound5Holdout.t.sol
+provenance=Solady ERC6909 (EIP-6909 multi-token, Vectorized/solady v0.1.22, commit 65e87c72, MIT); per-token-id bounded allowance cannot be over-drawn (transferFrom reverts InsufficientPermission); harness stays silent; see PROVENANCE.md

@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: OpenZeppelin Votes.delegateBySig (typed EIP-712 Delegation) is real published
+# code wal was NEVER tuned against; honest PRECISION check on unseen safe code. PRECISION-SIDE
+# safe holdout (no independent vuln blind-eth-sign incident at the bar not already used).
+# Distinct SURFACE: governance delegation-by-signature (OZ Votes), not a wallet withdrawal.
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=oz-votes-delegatebysig-safe verdict=...".
+vector=blind-eth-sign
+tier=c
+target=oz-votes-delegatebysig-safe
+label=safe
+split=holdout
+test=test/RealSafeVotesDelegateBySigHoldout.t.sol
+provenance=OpenZeppelin v5.1.0 ERC20Votes/Votes.delegateBySig (MIT); a blind eth_sign over an opaque hash does not cover the typed Delegation digest, recovers to a non-victim signer, cannot redirect the victim's voting power, BLOCKED; see PROVENANCE.md

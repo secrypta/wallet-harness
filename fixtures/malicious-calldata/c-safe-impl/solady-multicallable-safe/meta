@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real Solady library code the wal detectors were NEVER tuned against - an
+# honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[malicious-calldata] target=solady-multicallable-safe verdict=...".
+vector=malicious-calldata
+tier=c
+target=solady-multicallable-safe
+label=safe
+split=holdout
+test=test/RealSafeMaliciousCalldata.t.sol
+provenance=Solady v0.1.22 Multicallable (MIT) self-only delegatecall; no arbitrary-external-call sink; see PROVENANCE.md

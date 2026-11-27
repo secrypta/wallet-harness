@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[upgrade-governance] target=nomad-reinit-root-victim verdict=...".
+vector=upgrade-governance
+tier=b
+target=nomad-reinit-root-victim
+label=vuln
+split=holdout
+test=test/NomadReplicaIncident.t.sol
+provenance=Nomad Bridge exploit 2022-08-01 Ethereum ~$190M; routine implementation UPGRADE re-ran Replica initializer marking the ZERO root acceptable -> forged (un-proven) messages pass process() and drain custodied funds; process-out tx 0xa5fe9d04...e4a5460; see PROVENANCE.md

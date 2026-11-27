@@ -1,0 +1,7 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=address-poisoning
+title=Send trusts a look-alike address copied from history
+difficulty=core
+interface=send(address token, address to, uint256 amount)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/address-poisoning.md

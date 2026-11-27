@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=monkeydrainer-victim verdict=...".
+vector=set-approval-for-all
+tier=b
+target=monkeydrainer-victim
+label=vuln
+test=test/MonkeyDrainerIncident.t.sol
+provenance=Monkey Drainer NFT phishing-as-a-service (2022), setApprovalForAll selector 0xa22cb465; see PROVENANCE.md

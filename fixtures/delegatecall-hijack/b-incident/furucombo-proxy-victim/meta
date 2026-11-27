@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=furucombo-proxy-victim verdict=...".
+vector=delegatecall-hijack
+tier=b
+target=furucombo-proxy-victim
+label=vuln
+split=holdout
+test=test/FurucomboIncident.t.sol
+provenance=Furucombo evil-contract drain 2021-02-27 ~$15M; whitelisted-handler delegatecall + uninitialized Aave proxy implementation (cascading trust); mechanism-level, see PROVENANCE.md

@@ -1,0 +1,9 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=sven-eth-victim verdict=...".
+vector=eip7702-delegation
+tier=b
+target=sven-eth-victim
+label=vuln
+split=holdout
+test=test/SvenDelegationIncident.t.sol
+provenance=sven.eth EIP-7702 delegation drain, 2026-10-14 (~9.12 ETH + 1.69 TAPEETH, ~$22.7K, Ethereum). Victim EOA 0xd8ba9e5886b7000bace2c9dbdd0be98ac77d4a28 signed a type-4 SET_CODE authorization to malicious delegate 0x0366b55f948a688888ca6e029ad0831f6ec260d1; attacker-sponsor 0x9208097c007be15e28b20e94e66870a3f9f820bc submitted type-4 tx 0x36e0d1491c14e3d8e50bc70d73675b89d2d4712814d16f808f957c84fde820ee; see PROVENANCE.md

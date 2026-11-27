@@ -1,0 +1,35 @@
+{
+  "_comment": "FICTIONAL raw output of acme-approve-lint v0.0-example. Not a real tool. This is the kind of unedited native output that would live under raw/ and from which verdicts.txt is derived via the mapping rule in ../META.md. Only the approve-drainer vector is covered; everything else produced no finding.",
+  "tool": "acme-approve-lint",
+  "version": "v0.0-example",
+  "findings": [
+    {
+      "vector": "approve-drainer",
+      "target": "vulnerable-wallet",
+      "rule": "unbounded-approve",
+      "severity": "high",
+      "message": "approve(spender, type(uint256).max) reachable without allowance reset"
+    },
+    {
+      "vector": "approve-drainer",
+      "target": "badger-victim",
+      "rule": "unbounded-approve",
+      "severity": "critical",
+      "message": "infinite allowance granted to externally-controlled spender"
+    },
+    {
+      "vector": "approve-drainer",
+      "target": "safe-wallet",
+      "rule": "unbounded-approve",
+      "severity": "info",
+      "message": "allowance is bounded and reset after use"
+    },
+    {
+      "vector": "approve-drainer",
+      "target": "oz-safe-wallet",
+      "rule": "unbounded-approve",
+      "severity": "info",
+      "message": "uses safeIncreaseAllowance / safeDecreaseAllowance; no unbounded approve"
+    }
+  ]
+}

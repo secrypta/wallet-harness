@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real OpenZeppelin TimelockController code the wal detectors were NEVER tuned
+# against - an honest PRECISION check: a gated arbitrary-call executor must not read as an
+# arbitrary-call-injection sink. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[malicious-calldata] target=oz-timelock-executor-safe verdict=...".
+vector=malicious-calldata
+tier=c
+target=oz-timelock-executor-safe
+label=safe
+split=holdout
+test=test/RealSafeMaliciousCalldata.t.sol
+provenance=OpenZeppelin v5.1.0 TimelockController (MIT) as gated arbitrary-call executor; execute(target,data) requires EXECUTOR_ROLE + prior schedule + elapsed min-delay, injection blocked; see PROVENANCE.md

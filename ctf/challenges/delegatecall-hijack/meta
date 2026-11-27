@@ -1,0 +1,7 @@
+# CTF challenge descriptor. Mirrors a benchmark vector as a "patch the drain" puzzle.
+vector=delegatecall-hijack
+title=Unrestricted delegatecall target lets attacker code seize the wallet
+difficulty=core
+interface=execute(address target, bytes data, uint8 operation)
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.
+corpus_ref=corpus/delegatecall-hijack.md

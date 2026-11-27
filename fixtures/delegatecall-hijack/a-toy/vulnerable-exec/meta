@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (a): our MIT toy pair.
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=vulnerable-exec verdict=...".
+vector=delegatecall-hijack
+tier=a
+target=vulnerable-exec
+label=vuln
+test=test/DelegatecallHijack.t.sol
+provenance=synthetic toy target authored in this repo (MIT); no external source

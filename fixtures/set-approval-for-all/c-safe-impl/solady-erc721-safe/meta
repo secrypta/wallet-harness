@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady ERC721 is an independent impl wal was NEVER tuned against;
+# honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[set-approval-for-all] target=solady-erc721-safe verdict=...".
+vector=set-approval-for-all
+tier=c
+target=solady-erc721-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyNFTHoldout.t.sol
+provenance=Solady ERC721 (Vectorized/solady, MIT) scoped approve; unmodified operator authorization; see PROVENANCE.md

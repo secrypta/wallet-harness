@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[permit-phishing] target=lixir-permit-victim verdict=...".
+vector=permit-phishing
+tier=b
+target=lixir-permit-victim
+label=vuln
+split=holdout
+test=test/LixirPermitIncident.t.sol
+provenance=Lixir vault-token broken-permit drain (dummy signature accepted), 2026-06; see PROVENANCE.md

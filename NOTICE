@@ -1,0 +1,40 @@
+wallet-harness
+Copyright (c) 2026 secrypta (https://secrypta.com)
+
+This product is licensed under the MIT License (see LICENSE). Fixture source code under
+fixtures/ that is NOT inside fixtures/vendor/ is original work authored in this repository
+(MIT).
+
+fixtures/vendor/ contains unmodified third-party code, each component under its own LICENSE
+and documented in fixtures/vendor/PROVENANCE.md (source + commit/tag + license + any
+deviation):
+
+  OpenZeppelin Contracts (MIT)        fixtures/vendor/oz/
+  Uniswap Permit2        (MIT)        fixtures/vendor/permit2/  (its two solmate imports
+                                       repointed to an MIT shim; the only deviation, see
+                                       PROVENANCE.md)
+  Solady                 (MIT)        fixtures/vendor/solady/, fixtures/vendor/solady-accounts/
+  ERC721A                (MIT)        fixtures/vendor/erc721a/  (Copyright (c) 2022 Chiru Labs)
+
+One real-safe fixture, upgrade-governance/c-safe-impl/wormhole-initguard-safe, is a minimized
+reproduction of Wormhole's documented post-fix state, attributed to
+wormhole-foundation/wormhole (Apache-2.0); it carries an honest disclaimer in its
+PROVENANCE.md. No solmate source (AGPL-3.0) is copied or imported anywhere.
+
+-------------------------------------------------------------------------------
+Reference material (NOT redistributed here)
+-------------------------------------------------------------------------------
+
+Some real-incident fixtures (tier b) were located and fact-checked against public
+incident reproductions in:
+
+  SunWeb3Sec/DeFiHackLabs  (https://github.com/SunWeb3Sec/DeFiHackLabs)
+  Licensed under the Apache License, Version 2.0.
+  Reference commit: 8f077a91403c81af315c8903519a3bd9723a1903
+
+No DeFiHackLabs source code is copied or vendored into this repository. The
+DeFiHackLabs proofs-of-concept are mainnet-fork replays; our fixtures are original,
+minimized, offline mechanism reproductions. Each such fixture cites the specific
+DeFiHackLabs PoC path and the underlying authoritative post-mortem / on-chain
+transactions in its PROVENANCE.md. This notice is provided for attribution and
+transparency.

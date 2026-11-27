@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): reference-impl of the canonical defense.
+# Key is (vector, target); the harness emits "[create2-metamorphic] target=codehash-pinned-safe verdict=...".
+vector=create2-metamorphic
+tier=c
+target=codehash-pinned-safe
+label=safe
+test=test/RealSafeCreate2.t.sol
+provenance=CodehashPinnedVault reference-impl (codehash pinned + re-verified before outflow); see PROVENANCE.md

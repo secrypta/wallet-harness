@@ -1,0 +1,9 @@
+# CTF challenge descriptor. Incident-derived: patch a documented real drain.
+vector=approve-drainer
+title=Patch the Hedgey Finance stale-approval drain
+difficulty=advanced
+interface=cancelCampaign(bytes16 id)
+corpus_ref=corpus/approve-drainer.md
+# Incident facts verbatim from fixtures/approve-drainer/b-incident/hedgey-victim/PROVENANCE.md
+incident=Hedgey Finance ClaimCampaigns drain, 2024-04-19 (~$44.7M total; $2.1M ETH + $42.6M Arbitrum); createLockedCampaign granted a standing ERC-20 approval to an unvalidated campaign-supplied locker and cancelCampaign did NOT revoke it, so the residual allowance drained the contract's pooled balance; ETH attack tx 0x2606d459a50ca4920722a111745c2eeced1d8a01ff25ee762e22d5d4b1595739 (block 19687890) moved 1,303,910.12 USDC from ClaimCampaigns 0xbc452fdc...3d511 to attacker 0xded2b1a4...81dda2; sources Halborn + CertiK + TechFlow + ImmuneBytes + Rekt
+# Ground truth for selftest: gate must FAIL on seed/, PASS on solution/.

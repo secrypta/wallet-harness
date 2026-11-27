@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[create2-metamorphic] target=tornado-governance-victim verdict=...".
+vector=create2-metamorphic
+tier=b
+target=tornado-governance-victim
+label=vuln
+split=holdout
+test=test/TornadoGovernanceIncident.t.sol
+provenance=Tornado Cash governance takeover via metamorphic proposal (CREATE2+SELFDESTRUCT+redeploy), 2023-05-21 (~1.2M fake votes vs ~700k, $2.7M+); see PROVENANCE.md

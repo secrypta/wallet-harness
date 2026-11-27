@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=bybit-exec-victim verdict=...".
+vector=delegatecall-hijack
+tier=b
+target=bybit-exec-victim
+label=vuln
+test=test/BybitIncident.t.sol
+provenance=Bybit Safe multisig takeover 2025-02-21 ~$1.46B, operation flipped to delegatecall; mechanism-level, see PROVENANCE.md

@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real Solady UUPS proxy code the wal detectors were NEVER tuned against - an
+# honest PRECISION check that an independent (non-OZ) proxy's delegatecall-to-implementation is
+# not flagged. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=solady-uups-proxy-safe verdict=...".
+vector=delegatecall-hijack
+tier=c
+target=solady-uups-proxy-safe
+label=safe
+split=holdout
+test=test/RealSafeDelegatecallHijack.t.sol
+provenance=Solady v0.1.22 UUPSUpgradeable (MIT) behind an ERC1967 proxy; delegatecalls only the managed implementation slot, upgrade owner-gated, owner ops via plain call; see PROVENANCE.md

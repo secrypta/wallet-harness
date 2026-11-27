@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: real incident added after the v0.1 freeze (incident-derived, same posture as
+# R13/R14 holdout) - a corpus-split addition, not a clean generalization claim.
+# Key is (vector, target); the harness emits "[signature-phishing] target=sodium-erc1271-victim verdict=...".
+vector=signature-phishing
+tier=b
+target=sodium-erc1271-victim
+label=vuln
+split=holdout
+test=test/SodiumErc1271Incident.t.sol
+provenance=Lumi Finance / Sodium smart-account (ERC-4337) ERC-1271 forged / permissive-signer drain, 2026-07-13 (drain-scan R15 axis i); see PROVENANCE.md

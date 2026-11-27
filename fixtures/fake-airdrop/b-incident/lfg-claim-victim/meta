@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# Key is (vector, target); the harness emits "[fake-airdrop] target=lfg-claim-victim verdict=...".
+vector=fake-airdrop
+tier=b
+target=lfg-claim-victim
+label=vuln
+test=test/LfgFakeAirdropIncident.t.sol
+provenance=LFG fake-airdrop guide, 2023 (~$125K stETH, Nest CEO); see PROVENANCE.md

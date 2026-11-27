@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real Solady account code the wal detectors were NEVER tuned against - an
+# honest PRECISION check on unseen safe code. Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=solady-erc7821-safe verdict=...".
+vector=delegatecall-hijack
+tier=c
+target=solady-erc7821-safe
+label=safe
+split=holdout
+test=test/RealSafeDelegatecallHijack.t.sol
+provenance=Solady v0.1.22 ERC7821 batch executor (MIT) executes via plain call, no delegatecall operation flag; see PROVENANCE.md

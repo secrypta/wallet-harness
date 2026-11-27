@@ -1,0 +1,11 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: real incident added after the v0.1 freeze (incident-derived, same posture as
+# R13/R14 holdout) - a corpus-split addition, not a clean generalization claim.
+# Key is (vector, target); the harness emits "[signature-phishing] target=odos-erc6492-victim verdict=...".
+vector=signature-phishing
+tier=b
+target=odos-erc6492-victim
+label=vuln
+split=holdout
+test=test/OdosErc6492Incident.t.sol
+provenance=Odos limit-order-router ERC-6492 signature-validation drain, 2025-01-23 (drain-scan R15 axis iii); see PROVENANCE.md

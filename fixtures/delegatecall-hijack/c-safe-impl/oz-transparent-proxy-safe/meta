@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real OpenZeppelin transparent-proxy code the wal detectors were NEVER tuned
+# against - an honest PRECISION check that the transparent-proxy admin pattern is not flagged.
+# Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[delegatecall-hijack] target=oz-transparent-proxy-safe verdict=...".
+vector=delegatecall-hijack
+tier=c
+target=oz-transparent-proxy-safe
+label=safe
+split=holdout
+test=test/RealSafeDelegatecallHijack.t.sol
+provenance=OpenZeppelin v5.1.0 TransparentUpgradeableProxy + ProxyAdmin (MIT); delegatecalls only the managed implementation, upgrades routed through an owner-controlled ProxyAdmin; see PROVENANCE.md

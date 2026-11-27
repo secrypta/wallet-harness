@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: Solady Ownable two-step ownership handover on a 7702-delegate is real published
+# code wal was NEVER tuned against; honest PRECISION check on unseen safe code. Distinct PROPERTY:
+# two-step ownership-takeover defense (not init-time, not call-time role check).
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=solady-handover-safe verdict=...".
+vector=eip7702-delegation
+tier=c
+target=solady-handover-safe
+label=safe
+split=holdout
+test=test/RealSafeSoladyHandoverHoldout.t.sol
+provenance=Solady v0.1.22 Ownable two-step ownership handover (MIT) on a 7702-delegate; an attacker cannot unilaterally become owner (completeOwnershipHandover/transferOwnership are onlyOwner), BLOCKED; see PROVENANCE.md

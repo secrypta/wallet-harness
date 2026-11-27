@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (a): our MIT toy pair.
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=vulnerable-deleg verdict=...".
+vector=eip7702-delegation
+tier=a
+target=vulnerable-deleg
+label=vuln
+test=test/Eip7702Delegation.t.sol
+provenance=synthetic toy target authored in this repo (MIT); no external source

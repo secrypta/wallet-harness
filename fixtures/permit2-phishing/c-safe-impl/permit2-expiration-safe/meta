@@ -1,0 +1,12 @@
+# Benchmark fixture label (ground truth). Tier (c): genuinely-safe real implementation.
+# split=holdout: real vendored Uniswap Permit2 - an independent impl wal was NEVER tuned against.
+# EXPIRATION property (distinct from lockdown / invalidate-nonce / sigtransfer / scoped targets).
+# Scored via score.sh --split holdout.
+# Key is (vector, target); the harness emits "[permit2-phishing] target=permit2-expiration-safe verdict=...".
+vector=permit2-phishing
+tier=c
+target=permit2-expiration-safe
+label=safe
+split=holdout
+test=test/RealSafePermit2Round4.t.sol
+provenance=Real vendored Uniswap Permit2 (MIT, commit cc56ad0) AllowanceTransfer expiration: a bounded, short-expiry permit auto-revokes once block.timestamp passes the expiration, so a later transferFrom reverts AllowanceExpired; harness stays silent; see PROVENANCE.md

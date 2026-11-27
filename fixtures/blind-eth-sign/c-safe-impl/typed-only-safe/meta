@@ -1,0 +1,8 @@
+# Benchmark fixture label (ground truth). Tier (c): reference-impl of the canonical defense.
+# Key is (vector, target); the harness emits "[blind-eth-sign] target=typed-only-safe verdict=...".
+vector=blind-eth-sign
+tier=c
+target=typed-only-safe
+label=safe
+test=test/RealSafeBlindSign.t.sol
+provenance=ClearSigningWallet reference-impl (EIP-712 typed-only; raw-hash path disabled); see PROVENANCE.md

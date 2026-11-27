@@ -1,0 +1,13 @@
+# Benchmark fixture label (ground truth). Tier (c): real safe code (precision / 0-FP control).
+# NATURE (honest): the TRANSFER is unmodified OpenZeppelin v5.1.0 ERC20 (real third-party code,
+# MIT, commit 69c8def5; see PROVENANCE.md). The benign near-collision SCENARIO is an AUTHORED
+# synthetic control, NOT a real-world incident and NOT an independent real-world safe
+# implementation. Therefore NOT marked split=holdout (it is not an independent holdout): it is a
+# dev-side precision check that the poisoning logic does not false-positive on a legit send.
+# Key is (vector, target); the harness emits "[address-poisoning] target=oz-erc20-benign-nearcollision-safe verdict=...".
+vector=address-poisoning
+tier=c
+target=oz-erc20-benign-nearcollision-safe
+label=safe
+test=test/RealSafeAddressPoisoningNearCollision.t.sol
+provenance=real OpenZeppelin v5.1.0 ERC20.transfer (MIT, commit 69c8def5) to a verified FULL address while a displayed-prefix/suffix near-collision exists in history; legit send -> not misrouted -> harness BLOCKED (0-FP). real OZ code + AUTHORED synthetic near-collision scenario (no 3rd-party on-chain anti-poisoning lib exists; UX-vector boundary). see PROVENANCE.md

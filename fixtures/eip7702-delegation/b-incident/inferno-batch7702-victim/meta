@@ -1,0 +1,10 @@
+# Benchmark fixture label (ground truth). Tier (b): minimized real public incident.
+# split=holdout: NEW fixture authored after the wal detectors froze at v0.1 (genuine independence).
+# Key is (vector, target); the harness emits "[eip7702-delegation] target=inferno-batch7702-victim verdict=...".
+vector=eip7702-delegation
+tier=b
+target=inferno-batch7702-victim
+label=vuln
+split=holdout
+test=test/InfernoBatch7702Incident.t.sol
+provenance=Inferno Drainer batched EIP-7702 sweep (Scam Sniffer, 2025-05, ~$146,551 MetaMask user); multi-asset atomic drain, distinct from CrimeEnjoyor; see PROVENANCE.md
